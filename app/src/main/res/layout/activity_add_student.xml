@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/header"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingBottom="13dp" >
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="25dp"
+            android:layout_height="35dp"
+            android:background="@drawable/btn_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:fontFamily="@font/arbfonts_abdo_master_extrabold"
+            android:paddingTop="7dp"
+            android:text="add student"
+            android:textAllCaps="true"
+            android:textColor="@color/colorLightGray"
+            android:textSize="27sp"/>
+
+        <Button
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/ico_search"
+            android:visibility="invisible"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_student_name"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/student_name"
+        android:fontFamily="@font/arbfonts_abdo_master_medium"
+        android:hint="Username"
+        android:inputType="text"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingTop="5dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header"/>
+
+    <EditText
+        android:id="@+id/et_student_phone"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/student_phone"
+        android:fontFamily="@font/arbfonts_abdo_master_medium"
+        android:hint="Phone"
+        android:inputType="phone"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingTop="5dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/et_student_name"
+        app:layout_constraintTop_toBottomOf="@id/et_student_name" />
+
+    <Spinner
+        android:id="@+id/et_student_country"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/student_country"
+        android:fontFamily="@font/arbfonts_abdo_master_medium"
+        android:inputType="text"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/et_student_phone"
+        app:layout_constraintTop_toBottomOf="@id/et_student_phone" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/et_student_country">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/cb_aug"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="70dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="AUG"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+            <CheckBox
+                android:id="@+id/cb_jan"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="JAN"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/cb_sep"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="70dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="SEP"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+            <CheckBox
+                android:id="@+id/cb_feb"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="FEB"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/cb_oct"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="70dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="OCT"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+            <CheckBox
+                android:id="@+id/cb_mar"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="MAR"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/cb_nov"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="70dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="NOV"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+            <CheckBox
+                android:id="@+id/cb_apr"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="APR"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/cb_dec"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="70dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="DEC"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+            <CheckBox
+                android:id="@+id/cb_may"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="MAY"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/cb_note1"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="70dp"
+                android:buttonTint="@color/colorDarkRed"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="NOTE 1"
+                android:textColor="@color/colorDarkRed"
+                android:textSize="21sp" />
+
+            <CheckBox
+                android:id="@+id/cb_note2"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="@color/colorDarkRed"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="NOTE 2"
+                android:textColor="@color/colorDarkRed"
+                android:textSize="21sp" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/cb_rev1"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="70dp"
+                android:buttonTint="@color/colorDarkRed"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="REV 1"
+                android:textColor="@color/colorDarkRed"
+                android:textSize="21sp" />
+
+            <CheckBox
+                android:id="@+id/cb_rev2"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="@color/colorDarkRed"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="REV 2"
+                android:textColor="@color/colorDarkRed"
+                android:textSize="21sp" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="28dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:borderWidth="0dp"
+        app:elevation="10dp"
+        android:backgroundTint="@color/colorBabyBlue"
+        android:src="@drawable/ic_check" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@drawable/background">
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="270dp"
+        android:layout_height="160dp"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="30dp"
+        app:srcCompat="@drawable/logo" />
+
+    <ImageView
+        android:id="@+id/line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/logo"
+        app:srcCompat="@drawable/logo_line" />
+
+    <TextView
+        android:id="@+id/txt_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/line"
+        android:fontFamily="@font/arbfonts_abdo_master_medium"
+        android:text="Welcome Dr.Kassim"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/txt_logo"
+        android:layout_marginTop="45dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/btn_login"
+        android:fontFamily="@font/arbfonts_abdo_master_regular"
+        android:text="Login"
+        android:textColor="@color/colorWhite"
+        android:textSize="28dp" />
+
+</RelativeLayout>
+
+
+
