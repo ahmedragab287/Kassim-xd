@@ -2,47 +2,360 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".add_student"
-    android:padding="30dp">
+    android:background="@drawable/background"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header_update"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/header"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="13dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btn_back_update"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
+            android:background="@drawable/ic_arrow_back_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/update_txt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/update_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/arbfonts_abdo_master_extrabold"
+            android:text="Update Student"
+            android:textAllCaps="true"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorDarkGray"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_back_update"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_back_update" />
+
+        <Button
+            android:id="@+id/btn_search"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:background="@drawable/ic_search_black_24dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/update_txt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/update_txt"
+            app:layout_constraintTop_toTopOf="@+id/update_txt" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
-        android:id="@+id/student_name"
-        android:layout_width="match_parent"
+        android:id="@+id/et_student_name_update"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/student_name"
+        android:fontFamily="@font/arbfonts_abdo_master_medium"
+        android:hint="Username"
+        android:inputType="text"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingTop="5dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_update"/>
+
+    <EditText
+        android:id="@+id/et_student_phone_update"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/student_phone"
+        android:fontFamily="@font/arbfonts_abdo_master_medium"
+        android:hint="Phone"
+        android:inputType="phone"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:paddingTop="5dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/et_student_name_update"
+        app:layout_constraintTop_toBottomOf="@id/et_student_name_update" />
+
+    <Spinner
+        android:id="@+id/et_student_country_update"
+        android:layout_width="250dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/student_country"
+        android:fontFamily="@font/arbfonts_abdo_master_medium"
+        android:inputType="text"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/et_student_phone_update"
+        app:layout_constraintTop_toBottomOf="@id/et_student_phone_update" />
+
+    <TableLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:ems="10"
-        android:hint="Student Name"
-        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/et_student_country_update">
 
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/update_button"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="40dp"
-        android:text="Update"
-        android:textSize="20sp"
-        android:textAllCaps="false"
+            <CheckBox
+                android:id="@+id/cb_aug_update"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="70dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="AUG"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+            <CheckBox
+                android:id="@+id/cb_jan_update"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="JAN"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/cb_sep_update"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="70dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="SEP"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+            <CheckBox
+                android:id="@+id/cb_feb_update"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="FEB"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/cb_oct_update"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="70dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="OCT"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+            <CheckBox
+                android:id="@+id/cb_mar_update"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="MAR"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/cb_nov_update"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="70dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="NOV"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+            <CheckBox
+                android:id="@+id/cb_apr_update"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="APR"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/cb_dec_update"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="70dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="DEC"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+            <CheckBox
+                android:id="@+id/cb_may_update"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="@color/colorGray"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="MAY"
+                android:textColor="@color/colorWhite"
+                android:textSize="21sp" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/cb_note1_update"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="70dp"
+                android:buttonTint="@color/colorDarkRed"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="NOTE 1"
+                android:textColor="@color/colorDarkRed"
+                android:textSize="21sp" />
+
+            <CheckBox
+                android:id="@+id/cb_note2_update"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="@color/colorDarkRed"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="NOTE 2"
+                android:textColor="@color/colorDarkRed"
+                android:textSize="21sp" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <CheckBox
+                android:id="@+id/cb_rev1_update"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="70dp"
+                android:buttonTint="@color/colorDarkRed"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="REV 1"
+                android:textColor="@color/colorDarkRed"
+                android:textSize="21sp" />
+
+            <CheckBox
+                android:id="@+id/cb_rev2_update"
+                style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:buttonTint="@color/colorDarkRed"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:layoutDirection="rtl"
+                android:text="REV 2"
+                android:textColor="@color/colorDarkRed"
+                android:textSize="21sp" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_save_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="28dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/student_name" />
-
-    <Button
-        android:id="@+id/delete_button"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="16dp"
-        android:text="Delete"
-        android:textAllCaps="false"
-        android:textColor="@color/colorRed"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_button" />
+        app:borderWidth="0dp"
+        app:elevation="10dp"
+        android:backgroundTint="@color/colorBabyBlue"
+        android:src="@drawable/ic_check" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
