@@ -67,6 +67,16 @@ public class first_grade extends AppCompatActivity  {
         student_name = new ArrayList<>();
 
         spin_area_change();
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(first_grade.this, grades.class));
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+        finish();
     }
 
     private void spin_area_change() {
@@ -209,6 +219,7 @@ public class first_grade extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(first_grade.this, grades.class));
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
                 finish();
             }
         });

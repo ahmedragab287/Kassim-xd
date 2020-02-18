@@ -55,6 +55,8 @@ public class grades extends AppCompatActivity {
                 Intent i = new Intent(grades.this,first_grade.class);
                 i.putExtra("activity_num", 1);
                 startActivity(i);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                finish();
             }
         });
     }
@@ -68,6 +70,8 @@ public class grades extends AppCompatActivity {
                 Intent i = new Intent(grades.this,first_grade.class);
                 i.putExtra("activity_num", 2);
                 startActivity(i);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                finish();
             }
         });
     }
@@ -81,6 +85,8 @@ public class grades extends AppCompatActivity {
                 Intent i = new Intent(grades.this,first_grade.class);
                 i.putExtra("activity_num", 3);
                 startActivity(i);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                finish();
             }
         });
     }
@@ -94,6 +100,8 @@ public class grades extends AppCompatActivity {
                 Intent i = new Intent(grades.this,first_grade.class);
                 i.putExtra("activity_num", 4);
                 startActivity(i);
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                finish();
             }
         });
     }
@@ -105,6 +113,7 @@ public class grades extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(grades.this,working.class));
+                finish();
             }
         });
     }
@@ -116,6 +125,7 @@ public class grades extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(grades.this,working.class));
+                finish();
             }
         });
     }
@@ -127,6 +137,7 @@ public class grades extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(grades.this,working.class));
+                finish();
             }
         });
     }

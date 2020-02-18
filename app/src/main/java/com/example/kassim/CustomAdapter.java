@@ -1,13 +1,14 @@
 package com.example.kassim;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
@@ -35,9 +36,19 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.student_name.setText(String.valueOf(student_name.get(position)));
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
+
         holder.id.setText(String.valueOf(ID.get(position)));
+        holder.student_name.setText(String.valueOf(student_name.get(position)));
+        holder.mainlinear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context,UpdateActivity.class);
+                i.putExtra("student_name",String.valueOf(student_name.get(position)));
+
+                context.startActivity(i);
+            }
+        });
 
     }
 
@@ -49,11 +60,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         TextView id , student_name ;
+        LinearLayout mainlinear;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             student_name = itemView.findViewById(R.id.item_name);
             id = itemView.findViewById(R.id.item_id);
+            mainlinear = itemView.findViewById(R.id.mainLayout);
 
         }
     }

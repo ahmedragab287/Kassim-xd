@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,42 +18,29 @@ public class UpdateActivity extends AppCompatActivity {
 
     EditText et_student_name;
     Button btn_update, btn_delete;
-
     String id, student_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
-
-        et_student_name = findViewById(R.id.student_name);
-        btn_update = findViewById(R.id.update_button);
-        btn_delete = findViewById(R.id.delete_button);
-
-        getAndSetIntentData();
+        btn_back_update();
 
 
-        ActionBar ab = getSupportActionBar();
-        if (ab != null) {
-            ab.setTitle(student_name);
-        }
 
-        btn_update.setOnClickListener(new View.OnClickListener() {
+    }
+
+    public void btn_back_update(){
+        Button btn_back_update =findViewById(R.id.btn_back);
+        btn_back_update.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                //And only then we call this
-                DatabaseHelper myDB = new DatabaseHelper(UpdateActivity.this);
-                student_name = et_student_name.getText().toString().trim();
-                myDB.updateData(id, student_name);
+            public void onClick(View v) {
+
+                    Intent i = new Intent(UpdateActivity.this,first_grade.class);
+                    i.putExtra("activity_num", 1);
+                    startActivity(i);
             }
         });
-        btn_delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                confirmDialog();
-            }
-        });
-
     }
 
     void getAndSetIntentData(){
