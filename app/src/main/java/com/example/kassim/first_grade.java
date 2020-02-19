@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class first_grade extends AppCompatActivity  {
     OvershootInterpolator interpolator = new OvershootInterpolator();
     Boolean ismenuopen = false;
 
-    DatabaseHelper db;
+    DatabaseHelper db  ;
     ImageView empty_imageview;
     TextView no_data , grade_name;
     ArrayList<String> ID, student_name;
@@ -47,11 +46,10 @@ public class first_grade extends AppCompatActivity  {
         btn_back();         btn_main_float();
         btn_add();          btn_delete_all();
 
-        recyclerView = findViewById(R.id.recyclerView);
-        empty_imageview = findViewById(R.id.empty_imageview);
-        no_data = findViewById(R.id.no_data);
-        grade_name =findViewById(R.id.grade_name);
 
+        recyclerView = findViewById(R.id.recyclerView);
+
+        grade_name =findViewById(R.id.grade_name);
         activity_num = getIntent().getIntExtra("activity_num", 1);
         if (activity_num ==1){grade_name.setText("First Grade");}
         else if (activity_num ==2){grade_name.setText("Second Grade"); }
@@ -67,9 +65,8 @@ public class first_grade extends AppCompatActivity  {
         student_name = new ArrayList<>();
 
         spin_area_change();
-
-
     }
+
 
     @Override
     public void onBackPressed() {
@@ -107,11 +104,15 @@ public class first_grade extends AppCompatActivity  {
     }
 
     void storeDataInArray(int activity_num , String area){
+        empty_imageview = findViewById(R.id.empty_imageview);
+        no_data = findViewById(R.id.no_data);
 
         Cursor cursor = db.readalldata(activity_num , area);
         if(cursor.getCount()==0){
             empty_imageview.setVisibility(View.VISIBLE);
             no_data.setVisibility(View.VISIBLE);
+            if (db.count(activity_num) == 0){ spin_area.setVisibility(View.GONE);}
+            else { spin_area.setVisibility(View.VISIBLE);}
 
         }else {
             while (cursor.moveToNext()){
@@ -120,6 +121,7 @@ public class first_grade extends AppCompatActivity  {
             }
             empty_imageview.setVisibility(View.GONE);
             no_data.setVisibility(View.GONE);
+            spin_area.setVisibility(View.VISIBLE);
         }
     }
 

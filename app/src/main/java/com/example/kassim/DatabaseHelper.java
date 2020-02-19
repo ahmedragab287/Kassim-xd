@@ -3,11 +3,14 @@ package com.example.kassim;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import com.shashank.sony.fancytoastlib.FancyToast;
+
+import java.io.File;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -176,6 +179,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+
+     public int count(int activity_num) {
+        int plantCount = 0; String sql = "";
+
+        if (activity_num == 1) { sql = "SELECT COUNT(*) FROM " + Table_Grade1;}
+        else if (activity_num == 2){ sql = "SELECT COUNT(*) FROM " + Table_Grade2; }
+        else if (activity_num == 3){ sql = "SELECT COUNT(*) FROM " + Table_Grade3; }
+        else if (activity_num == 4){ sql = "SELECT COUNT(*) FROM " + Table_GradeP; }
+
+        Cursor cursor = getReadableDatabase().rawQuery(sql, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            plantCount = cursor.getInt(0);
+        }
+
+        cursor.close();
+        return plantCount;
+    }
+
+
     Cursor readalldata(int activity_num , String area){
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
@@ -201,7 +224,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-
     /* Need Edit for table 2 >> 3 >> P >>  from here  */
     void updateData(String row_id, String student_name){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -215,6 +237,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
         }
     }
+
     void deleteOneRow(String row_id){
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(Table_Grade1, "_id=?", new String[]{row_id});
