@@ -19,25 +19,25 @@
         android:layout_marginTop="32dp"/>
 
     <RelativeLayout
+        android:id="@+id/photo_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_back"
-        android:layout_marginTop="-70dp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/photo_layout">
+        android:layout_marginTop="-90dp">
 
         <ImageView
             android:id="@+id/photo"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"
             app:srcCompat="@drawable/photo" />
 
         <ImageView
             android:id="@+id/photo_ring"
-            android:layout_width="145dp"
-            android:layout_height="145dp"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="33dp"
             app:srcCompat="@drawable/circle" />
@@ -47,28 +47,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/photo_ring"
-            android:layout_marginTop="2dp"
             android:elevation="5dp"
             android:fontFamily="@font/arbfonts_abdo_master_medium"
             android:text="Kassim Ahmed"
             android:textColor="@color/colorWhite"
-            android:textSize="23sp" />
+            android:textSize="17sp" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/first_grade"
-        android:layout_width="190dp"
-        android:layout_height="220dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_below="@+id/photo_layout"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/grade_rec"
-        android:padding="0dp">
+        android:background="@drawable/grade_rec">
 
         <Button
-            android:id="@+id/pen_gradeone"
+            android:id="@+id/pen_gradeOne"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_alignParentTop="true"
@@ -81,11 +78,10 @@
             android:id="@+id/circul_one"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:layout_below="@id/pen_gradeone"
+            android:layout_below="@id/pen_gradeOne"
             android:layout_centerHorizontal="true"
             android:background="@drawable/grade_one"
             android:fontFamily="@font/arbfonts_abdo_master_outline"
-            android:paddingTop="5dp"
             android:text="1"
             android:textColor="@color/colorDarkBlue"
             android:textSize="40dp" />
@@ -155,7 +151,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/gradeOne_rate"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="40dp"
             android:layout_toEndOf="@+id/gradeOne_rate"
             android:fontFamily="@font/hotrgb"
             android:text="0000"
@@ -180,14 +176,13 @@
 
     <RelativeLayout
         android:id="@+id/second_grade"
-        android:layout_width="190dp"
-        android:layout_height="220dp"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
         android:layout_alignTop="@+id/first_grade"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="200dp"
+        android:layout_alignParentEnd="false"
         android:layout_marginRight="5dp"
-        android:background="@drawable/grade_rec"
-        tools:visibility="visible">
+        android:layout_toEndOf="@+id/first_grade"
+        android:background="@drawable/grade_rec">
 
         <Button
             android:id="@+id/pen_gradetwo"
@@ -207,7 +202,6 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/grade_two"
             android:fontFamily="@font/arbfonts_abdo_master_outline"
-            android:paddingTop="5dp"
             android:text="2"
             android:textColor="@color/colorDarkBlue"
             android:textSize="40dp" />
@@ -277,7 +271,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/gradetwo_rate"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="40dp"
             android:layout_toEndOf="@+id/gradetwo_rate"
             android:fontFamily="@font/hotrgb"
             android:text="0000"
@@ -302,12 +296,11 @@
 
     <RelativeLayout
         android:id="@+id/third_grade"
-        android:layout_width="190dp"
-        android:layout_height="220dp"
-        android:layout_below="@id/first_grade"
-        android:layout_marginLeft="5dp"
-        android:background="@drawable/grade_rec"
-        tools:visibility="visible">
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_alignTop="@+id/first_grade"
+        android:layout_toEndOf="@+id/second_grade"
+        android:background="@drawable/grade_rec">
 
         <Button
             android:id="@+id/pen_gradethere"
@@ -327,7 +320,6 @@
             android:layout_centerHorizontal="true"
             android:background="@drawable/grade_there"
             android:fontFamily="@font/arbfonts_abdo_master_outline"
-            android:paddingTop="5dp"
             android:text="3"
             android:textColor="@color/colorDarkBlue"
             android:textSize="40dp" />
@@ -397,7 +389,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/gradethere_rate"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="40dp"
             android:layout_toEndOf="@+id/gradethere_rate"
             android:fontFamily="@font/hotrgb"
             android:text="0000"
@@ -421,13 +413,13 @@
 
     <RelativeLayout
         android:id="@+id/private_grade"
-        android:layout_width="190dp"
-        android:layout_height="220dp"
-        android:layout_below="@id/second_grade"
-        android:layout_alignParentEnd="true"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_alignTop="@+id/first_grade"
+        android:layout_alignParentEnd="false"
         android:layout_marginRight="5dp"
-        android:background="@drawable/grade_rec"
-        tools:visibility="visible">
+        android:layout_toEndOf="@+id/third_grade"
+        android:background="@drawable/grade_rec">
 
         <Button
             android:id="@+id/pen_gradeprivate"
@@ -448,7 +440,6 @@
             android:background="@drawable/grade_privet"
             android:fontFamily="@font/arbfonts_abdo_master_outline"
             android:paddingLeft="5dp"
-            android:paddingTop="5dp"
             android:text="P"
             android:textColor="@color/colorDarkBlue"
             android:textSize="40dp" />
@@ -518,7 +509,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/gradeprivate_rate"
-            android:layout_marginStart="50dp"
+            android:layout_marginStart="40dp"
             android:layout_toEndOf="@+id/gradeprivate_rate"
             android:fontFamily="@font/hotrgb"
             android:text="0000"
@@ -542,20 +533,18 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/third_grade"
-        android:layout_alignEnd="@+id/private_grade"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/total_rec"
-        tools:visibility="visible">
+        android:background="@drawable/total_rec">
 
         <TextView
+            android:id="@+id/total_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="65dp"
+            android:layout_marginLeft="265dp"
             android:fontFamily="@font/arbfonts_abdo_master_book"
             android:text="TOTAL IS"
             android:textAlignment="center"
@@ -567,8 +556,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
+            android:layout_marginStart="25dp"
             android:layout_marginLeft="190dp"
             android:layout_marginTop="6dp"
+            android:layout_toEndOf="@+id/total_txt"
             android:fontFamily="@font/hotrgb"
             android:text="0000"
             android:textAlignment="center"
@@ -589,3 +580,4 @@
     </RelativeLayout>
 
 </RelativeLayout>
+

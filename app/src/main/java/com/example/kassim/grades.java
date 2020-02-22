@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 public class grades extends AppCompatActivity {
@@ -52,8 +51,16 @@ public class grades extends AppCompatActivity {
         first_grade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent i = new Intent(grades.this,first_grade.class);
                 i.putExtra("activity_num", 1);
+
+                SharedPreferences preferences = getSharedPreferences("activity_num",MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("activity_num_num","1");
+                editor.apply();
+
+
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 finish();
@@ -69,6 +76,12 @@ public class grades extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(grades.this,first_grade.class);
                 i.putExtra("activity_num", 2);
+
+                SharedPreferences preferences = getSharedPreferences("activity_num",MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("activity_num_num","2");
+                editor.apply();
+
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 finish();
@@ -84,6 +97,12 @@ public class grades extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(grades.this,first_grade.class);
                 i.putExtra("activity_num", 3);
+
+                SharedPreferences preferences = getSharedPreferences("activity_num",MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("activity_num_num","3");
+                editor.apply();
+
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 finish();
@@ -99,6 +118,12 @@ public class grades extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(grades.this,first_grade.class);
                 i.putExtra("activity_num", 4);
+
+                SharedPreferences preferences = getSharedPreferences("activity_num",MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("activity_num_num","4");
+                editor.apply();
+
                 startActivity(i);
                 overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
                 finish();
@@ -141,5 +166,4 @@ public class grades extends AppCompatActivity {
             }
         });
     }
-
 }

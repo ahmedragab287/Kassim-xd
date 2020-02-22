@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
@@ -40,13 +41,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
         holder.id.setText(String.valueOf(ID.get(position)));
         holder.student_name.setText(String.valueOf(student_name.get(position)));
+
         holder.mainlinear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent i = new Intent(context,UpdateActivity.class);
+                i.putExtra("id",String.valueOf(ID.get(position)));
                 i.putExtra("student_name",String.valueOf(student_name.get(position)));
+                i.putExtra("activity_num", 1);
 
                 context.startActivity(i);
+
             }
         });
 
@@ -64,8 +70,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            student_name = itemView.findViewById(R.id.item_name);
             id = itemView.findViewById(R.id.item_id);
+            student_name = itemView.findViewById(R.id.item_name);
             mainlinear = itemView.findViewById(R.id.mainLayout);
 
         }

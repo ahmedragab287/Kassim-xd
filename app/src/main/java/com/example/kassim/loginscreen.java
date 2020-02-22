@@ -81,15 +81,17 @@ public class loginscreen extends AppCompatActivity {
             {
 
                 if (username.getText().toString().equals("")&&
-                        password.getText().toString().equals(""))
-                {
+                        password.getText().toString().equals("")) {
                     FancyToast.makeText(loginscreen.this,"Welcome Dr.Kassim "
                             ,FancyToast.LENGTH_SHORT,FancyToast.DEFAULT,false).show();
 
-                        startActivity(new Intent(loginscreen.this, grades.class));
-                        loginscreen.this.finish();
 
-                } else {
+                    startActivity(new Intent(loginscreen.this, grades.class));
+                    overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+                    finish();
+
+                }
+                else {
                     FancyToast.makeText(loginscreen.this,"Wrong Username or Password"
                             ,FancyToast.LENGTH_SHORT,FancyToast.ERROR,false).show();
                 }

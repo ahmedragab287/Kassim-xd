@@ -3,14 +3,11 @@ package com.example.kassim;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import com.shashank.sony.fancytoastlib.FancyToast;
-
-import java.io.File;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -181,7 +178,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
      public int count(int activity_num) {
-        int plantCount = 0; String sql = "";
+        int student_count = 0; String sql = "";
 
         if (activity_num == 1) { sql = "SELECT COUNT(*) FROM " + Table_Grade1;}
         else if (activity_num == 2){ sql = "SELECT COUNT(*) FROM " + Table_Grade2; }
@@ -191,11 +188,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = getReadableDatabase().rawQuery(sql, null);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            plantCount = cursor.getInt(0);
+            student_count = cursor.getInt(0);
         }
 
         cursor.close();
-        return plantCount;
+        return student_count;
     }
 
 
@@ -249,7 +246,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
     /*              to here         */
 
-
     void deleteAllData(int activity_num ){
         SQLiteDatabase db = this.getWritableDatabase();
         if (activity_num ==1)     {db.execSQL("Drop TABLE IF EXISTS "+Table_Grade1);}
@@ -259,5 +255,572 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         onCreate(db);
     }
+
+    int checkbox(int activity_num , int id , String month){
+
+        String query = "" ;
+        int result = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        if (activity_num == 1) {
+            if (month.equals("aug")){
+                query = "SELECT "+ col_aug +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_aug));
+                }
+                csr.close();
+            }
+            if (month.equals("sep")){
+                query = "SELECT "+ col_sep +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_sep));
+                }
+                csr.close();
+            }
+            if (month.equals("oct")){
+                query = "SELECT "+ col_oct +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_oct));
+                }
+                csr.close();
+            }
+            if (month.equals("nov")){
+                query = "SELECT "+ col_nov +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_nov));
+                }
+                csr.close();
+            }
+            if (month.equals("dec")){
+                query = "SELECT "+ col_dec +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_dec));
+                }
+                csr.close();
+            }
+            if (month.equals("note1")){
+                query = "SELECT "+ col_note1 +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_note1));
+                }
+                csr.close();
+            }
+            if (month.equals("rev1")){
+                query = "SELECT "+ col_rev1 +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_rev1));
+                }
+                csr.close();
+            }
+            if (month.equals("jan")){
+                query = "SELECT "+ col_jan +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_jan));
+                }
+                csr.close();
+            }
+            if (month.equals("feb")){
+                query = "SELECT "+ col_feb +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_feb));
+                }
+                csr.close();
+            }
+            if (month.equals("mar")){
+                query = "SELECT "+ col_mar +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_mar));
+                }
+                csr.close();
+            }
+            if (month.equals("apr")){
+                query = "SELECT "+ col_apr +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_apr));
+                }
+                csr.close();
+            }
+            if (month.equals("may")){
+                query = "SELECT "+ col_may +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_may));
+                }
+                csr.close();
+            }
+            if (month.equals("note2")){
+                query = "SELECT "+ col_note2 +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_note2));
+                }
+                csr.close();
+            }
+            if (month.equals("rev2")){
+                query = "SELECT "+ col_rev2 +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_rev2));
+                }
+                csr.close();
+            }
+
+        }
+        else if (activity_num == 2){
+            if (month.equals("aug")){
+                query = "SELECT "+ col_aug +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_aug));
+                }
+                csr.close();
+            }
+            if (month.equals("sep")){
+                query = "SELECT "+ col_sep +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_sep));
+                }
+                csr.close();
+            }
+            if (month.equals("oct")){
+                query = "SELECT "+ col_oct +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_oct));
+                }
+                csr.close();
+            }
+            if (month.equals("nov")){
+                query = "SELECT "+ col_nov +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_nov));
+                }
+                csr.close();
+            }
+            if (month.equals("dec")){
+                query = "SELECT "+ col_dec +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_dec));
+                }
+                csr.close();
+            }
+            if (month.equals("note1")){
+                query = "SELECT "+ col_note1 +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_note1));
+                }
+                csr.close();
+            }
+            if (month.equals("rev1")){
+                query = "SELECT "+ col_rev1 +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_rev1));
+                }
+                csr.close();
+            }
+            if (month.equals("jan")){
+                query = "SELECT "+ col_jan +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_jan));
+                }
+                csr.close();
+            }
+            if (month.equals("feb")){
+                query = "SELECT "+ col_feb +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_feb));
+                }
+                csr.close();
+            }
+            if (month.equals("mar")){
+                query = "SELECT "+ col_mar +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_mar));
+                }
+                csr.close();
+            }
+            if (month.equals("apr")){
+                query = "SELECT "+ col_apr +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_apr));
+                }
+                csr.close();
+            }
+            if (month.equals("may")){
+                query = "SELECT "+ col_may +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_may));
+                }
+                csr.close();
+            }
+            if (month.equals("note2")){
+                query = "SELECT "+ col_note2 +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_note2));
+                }
+                csr.close();
+            }
+            if (month.equals("rev2")){
+                query = "SELECT "+ col_rev2 +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_rev2));
+                }
+                csr.close();
+            }
+        }
+        else if (activity_num == 3){
+            if (month.equals("aug")){
+                query = "SELECT "+ col_aug +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_aug));
+                }
+                csr.close();
+            }
+            if (month.equals("sep")){
+                query = "SELECT "+ col_sep +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_sep));
+                }
+                csr.close();
+            }
+            if (month.equals("oct")){
+                query = "SELECT "+ col_oct +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_oct));
+                }
+                csr.close();
+            }
+            if (month.equals("nov")){
+                query = "SELECT "+ col_nov +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_nov));
+                }
+                csr.close();
+            }
+            if (month.equals("dec")){
+                query = "SELECT "+ col_dec +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_dec));
+                }
+                csr.close();
+            }
+            if (month.equals("note1")){
+                query = "SELECT "+ col_note1 +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_note1));
+                }
+                csr.close();
+            }
+            if (month.equals("rev1")){
+                query = "SELECT "+ col_rev1 +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_rev1));
+                }
+                csr.close();
+            }
+            if (month.equals("jan")){
+                query = "SELECT "+ col_jan +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_jan));
+                }
+                csr.close();
+            }
+            if (month.equals("feb")){
+                query = "SELECT "+ col_feb +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_feb));
+                }
+                csr.close();
+            }
+            if (month.equals("mar")){
+                query = "SELECT "+ col_mar +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_mar));
+                }
+                csr.close();
+            }
+            if (month.equals("apr")){
+                query = "SELECT "+ col_apr +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_apr));
+                }
+                csr.close();
+            }
+            if (month.equals("may")){
+                query = "SELECT "+ col_may +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_may));
+                }
+                csr.close();
+            }
+            if (month.equals("note2")){
+                query = "SELECT "+ col_note2 +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_note2));
+                }
+                csr.close();
+            }
+            if (month.equals("rev2")){
+                query = "SELECT "+ col_rev2 +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_rev2));
+                }
+                csr.close();
+            }
+        }
+        else if (activity_num == 4){
+            if (month.equals("aug")){
+                query = "SELECT "+ col_aug +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_aug));
+                }
+                csr.close();
+            }
+            if (month.equals("sep")){
+                query = "SELECT "+ col_sep +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_sep));
+                }
+                csr.close();
+            }
+            if (month.equals("oct")){
+                query = "SELECT "+ col_oct +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_oct));
+                }
+                csr.close();
+            }
+            if (month.equals("nov")){
+                query = "SELECT "+ col_nov +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_nov));
+                }
+                csr.close();
+            }
+            if (month.equals("dec")){
+                query = "SELECT "+ col_dec +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_dec));
+                }
+                csr.close();
+            }
+            if (month.equals("note1")){
+                query = "SELECT "+ col_note1 +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_note1));
+                }
+                csr.close();
+            }
+            if (month.equals("rev1")){
+                query = "SELECT "+ col_rev1 +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_rev1));
+                }
+                csr.close();
+            }
+            if (month.equals("jan")){
+                query = "SELECT "+ col_jan +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_jan));
+                }
+                csr.close();
+            }
+            if (month.equals("feb")){
+                query = "SELECT "+ col_feb +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_feb));
+                }
+                csr.close();
+            }
+            if (month.equals("mar")){
+                query = "SELECT "+ col_mar +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_mar));
+                }
+                csr.close();
+            }
+            if (month.equals("apr")){
+                query = "SELECT "+ col_apr +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_apr));
+                }
+                csr.close();
+            }
+            if (month.equals("may")){
+                query = "SELECT "+ col_may +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_may));
+                }
+                csr.close();
+            }
+            if (month.equals("note2")){
+                query = "SELECT "+ col_note2 +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_note2));
+                }
+                csr.close();
+            }
+            if (month.equals("rev2")){
+                query = "SELECT "+ col_rev2 +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+
+                Cursor csr = db.rawQuery(query,null);
+                if (csr.moveToFirst()) {
+                    result = csr.getInt(csr.getColumnIndex(col_rev2));
+                }
+                csr.close();
+            }
+        }
+
+
+        return result;
+    }
+
+    String edit_text_info(int activity_num , int id ){
+
+        String phone = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        if (activity_num == 1){
+            String query = "SELECT "+ col_PHONE +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+            Cursor csr = db.rawQuery(query,null);
+            if (csr.moveToFirst()) {
+                phone = csr.getString(csr.getColumnIndex(col_PHONE));
+            }
+            csr.close();
+        }
+        else if(activity_num == 2){
+            String query = "SELECT "+ col_PHONE +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+            Cursor csr = db.rawQuery(query,null);
+            if (csr.moveToFirst()) {
+                phone = csr.getString(csr.getColumnIndex(col_PHONE));
+            }
+            csr.close();
+        }
+        else if (activity_num == 3){
+            String query = "SELECT "+ col_PHONE +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+            Cursor csr = db.rawQuery(query,null);
+            if (csr.moveToFirst()) {
+                phone = csr.getString(csr.getColumnIndex(col_PHONE));
+            }
+            csr.close();
+        }
+        else if (activity_num ==4){
+            String query = "SELECT "+ col_PHONE +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+            Cursor csr = db.rawQuery(query,null);
+            if (csr.moveToFirst()) {
+                phone = csr.getString(csr.getColumnIndex(col_PHONE));
+            }
+            csr.close();
+        }
+
+        return  phone;
+    }
+
+
 
 }

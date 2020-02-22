@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,loginscreen.class));
+                overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
             }
         });
     }
