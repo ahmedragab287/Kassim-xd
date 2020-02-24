@@ -221,30 +221,75 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    /* Need Edit for table 2 >> 3 >> P >>  from here  */
-    void updateData(String row_id, String student_name){
+    void updateData(int activity_num ,String row_id, String student_name , String student_phone  ,
+                    int mt_aug , int mt_sep , int mt_oct , int mt_nov , int mt_dec,
+                    int mt_jan , int mt_feb , int mt_mar , int mt_apr , int mt_may,
+                    int note1  , int note2  , int rev1   , int rev2){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(col_NAME, student_name);
+        cv.put(col_PHONE, student_phone);
+        //cv.put(col_PHONE, student_phone);
+        cv.put(col_aug, mt_aug);
+        cv.put(col_sep, mt_sep);
+        cv.put(col_oct, mt_oct);
+        cv.put(col_nov, mt_nov);
+        cv.put(col_dec, mt_dec);
+        cv.put(col_jan, mt_jan);
+        cv.put(col_feb, mt_feb);
+        cv.put(col_mar, mt_mar);
+        cv.put(col_apr, mt_apr);
+        cv.put(col_may, mt_may);
+        cv.put(col_note1, note1);
+        cv.put(col_note2, note2);
+        cv.put(col_rev1, rev1);
+        cv.put(col_rev2, rev2);
 
-        long result = db.update(Table_Grade1, cv, "_id=?", new String[]{row_id});
-        if(result == -1){
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
+        long result = 0;
+
+        if (activity_num == 1){
+            result = db.update(Table_Grade1, cv, ID+"=?", new String[]{row_id});
         }
+        else if(activity_num == 2){
+            result = db.update(Table_Grade2, cv, ID+"=?", new String[]{row_id});
+        }
+        else if(activity_num == 3){
+            result = db.update(Table_Grade3, cv, ID+"=?", new String[]{row_id});
+        }
+        else if(activity_num == 4){
+            result = db.update(Table_GradeP, cv, ID+"=?", new String[]{row_id});
+        }
+
+
+
+        if(result == -1){ Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show(); }
+        else { Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show(); }
+
     }
 
-    void deleteOneRow(String row_id){
+    void deleteOneRow(String row_id , int activity_num){
         SQLiteDatabase db = this.getWritableDatabase();
-        long result = db.delete(Table_Grade1, "_id=?", new String[]{row_id});
+        long result = -1;
+        if (activity_num == 1){
+            result = db.delete(Table_Grade1, ID +"=?",new String[]{row_id});
+        }
+        else if  (activity_num == 2) {
+            result = db.delete(Table_Grade2, ID +"=?",new String[]{row_id});
+        }
+        else if (activity_num == 3){
+            result = db.delete(Table_Grade3, ID +"=?",new String[]{row_id});
+        }
+        else if (activity_num  == 4){
+            result = db.delete(Table_GradeP, ID +"=?",new String[]{row_id});
+        }
+
+
         if(result == -1){
             Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
         }else{
             Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
         }
     }
-    /*              to here         */
 
     void deleteAllData(int activity_num ){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -776,11 +821,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }
 
-
         return result;
     }
 
-    String edit_text_info(int activity_num , int id ){
+    String get_student_phone(int activity_num , int id ){
 
         String phone = "";
         SQLiteDatabase db = this.getReadableDatabase();
@@ -821,6 +865,46 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return  phone;
     }
 
+    String get_student_country(int activity_num , int id ){
+
+        String country = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        if (activity_num == 1){
+            String query = "SELECT "+ col_COUNRTY +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+            Cursor csr = db.rawQuery(query,null);
+            if (csr.moveToFirst()) {
+                country = csr.getString(csr.getColumnIndex(col_COUNRTY));
+            }
+            csr.close();
+        }
+        else if(activity_num == 2){
+            String query = "SELECT "+ col_COUNRTY +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+            Cursor csr = db.rawQuery(query,null);
+            if (csr.moveToFirst()) {
+                country = csr.getString(csr.getColumnIndex(col_COUNRTY));
+            }
+            csr.close();
+        }
+        else if (activity_num == 3){
+            String query = "SELECT "+ col_COUNRTY +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+            Cursor csr = db.rawQuery(query,null);
+            if (csr.moveToFirst()) {
+                country = csr.getString(csr.getColumnIndex(col_COUNRTY));
+            }
+            csr.close();
+        }
+        else if (activity_num ==4){
+            String query = "SELECT "+ col_COUNRTY +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+            Cursor csr = db.rawQuery(query,null);
+            if (csr.moveToFirst()) {
+                country = csr.getString(csr.getColumnIndex(col_COUNRTY));
+            }
+            csr.close();
+        }
+
+        return  country;
+    }
 
 
 }
