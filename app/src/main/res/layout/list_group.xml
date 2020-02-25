@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/mainLayout">
@@ -12,19 +13,19 @@
         android:padding="12dp">
 
 
-
         <TextView
             android:id="@+id/item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/list_group"
+            android:fontFamily="@font/arbfonts_hacen_samra"
+            android:paddingTop="7dp"
+            android:paddingEnd="90dp"
+            android:paddingStart="20dp"
+            android:text="STUDENT NAME"
+            android:textDirection="rtl"
             android:textColor="@color/colorWhite"
             android:textSize="20sp"
-            android:paddingTop="7dp"
-            android:text="ahmed"
-            android:paddingStart="65dp"
-            android:paddingEnd="10dp"
-            android:fontFamily="@font/arbfonts_hacen_samra"
-            android:background="@drawable/list_group"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -32,15 +33,15 @@
             android:id="@+id/item_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/arbfonts_hacen_samra"
+            android:paddingTop="7dp"
+            android:layout_marginRight="30dp"
+            android:textAlignment="center"
+            android:text="000"
             android:textColor="@color/colorWhite"
             android:textSize="20sp"
-            android:paddingTop="7dp"
-            android:text="000"
-            android:paddingStart="15dp"
-            android:paddingEnd="80dp"
-            android:fontFamily="@font/arbfonts_hacen_samra"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="@+id/item_name"
+            app:layout_constraintTop_toTopOf="@+id/item_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

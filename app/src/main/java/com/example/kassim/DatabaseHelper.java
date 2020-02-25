@@ -33,6 +33,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String col_mar = "month_mar";
     private static final String col_apr = "month_apr";
     private static final String col_may = "month_may";
+    private static final String col_private_price = "private_price";
     private static final String col_note1 = "month_note1";
     private static final String col_note2 = "month_note2";
     private static final String col_rev1 = "month_rev1";
@@ -126,7 +127,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 col_note1 + " INTEGER ,"+
                 col_note2 + " INTEGER ,"+
                 col_rev1  + " INTEGER ,"+
-                col_rev2  + " INTEGER "+
+                col_rev2  + " INTEGER ,"+
+                col_private_price + " INTEGER " +
                 ")";
         db.execSQL(CREATE_TABLE_Grade1);
         db.execSQL(CREATE_TABLE_Grade2);

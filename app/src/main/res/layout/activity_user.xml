@@ -19,12 +19,12 @@
         android:layout_marginTop="32dp"/>
 
     <RelativeLayout
+        android:id="@+id/photo_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_back"
-        android:layout_marginTop="-70dp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/photo_layout">
+        android:layout_marginTop="-70dp">
 
         <ImageView
             android:id="@+id/photo"
@@ -56,536 +56,539 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/first_grade"
-        android:layout_width="190dp"
-        android:layout_height="220dp"
-        android:layout_below="@+id/photo_layout"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/grade_rec"
-        android:padding="0dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/photo_layout">
 
-        <Button
-            android:id="@+id/pen_gradeone"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="17dp"
-            android:background="@drawable/icon_pen" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/circul_one"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@id/pen_gradeone"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/grade_one"
-            android:fontFamily="@font/arbfonts_abdo_master_outline"
-            android:paddingTop="5dp"
-            android:text="1"
-            android:textColor="@color/colorDarkBlue"
-            android:textSize="40dp" />
+            <RelativeLayout
+                android:id="@+id/first_grade"
+                android:layout_width="175dp"
+                android:layout_height="215dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="5dp"
+                android:background="@drawable/grade_rec"
+                android:padding="0dp">
 
-        <TextView
-            android:id="@+id/gradeOne_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/circul_one"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="00"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+                <Button
+                    android:id="@+id/pen_gradeone"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="23dp"
+                    android:background="@drawable/icon_pen" />
 
-        <TextView
-            android:id="@+id/gradeOne_student"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/gradeOne_count"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="-10dp"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="Students"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+                <Button
+                    android:id="@+id/circul_one"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_below="@id/pen_gradeone"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/grade_one"
+                    android:fontFamily="@font/arbfonts_abdo_master_outline"
+                    android:paddingTop="5dp"
+                    android:text="1"
+                    android:textColor="@color/colorDarkBlue"
+                    android:textSize="40dp" />
 
-        <ImageView
-            android:id="@+id/gradeOne_line"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/gradeOne_student"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="-10dp"
-            app:srcCompat="@drawable/line_one" />
+                <TextView
+                    android:id="@+id/gradeOne_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/circul_one"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="00"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/gradeOne_rate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="25dp"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/hotrgb"
-            android:text="00"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="26sp" />
+                <TextView
+                    android:id="@+id/gradeOne_student"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/gradeOne_count"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="-10dp"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="Students"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/gradeOne_rate"
-            android:layout_marginLeft="2dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toEndOf="@+id/gradeOne_rate"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="EGP"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="10sp" />
+                <ImageView
+                    android:id="@+id/gradeOne_line"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gradeOne_student"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="-10dp"
+                    app:srcCompat="@drawable/line_one" />
 
-        <TextView
-            android:id="@+id/gradeOne_total"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/gradeOne_rate"
-            android:layout_marginStart="50dp"
-            android:layout_toEndOf="@+id/gradeOne_rate"
-            android:fontFamily="@font/hotrgb"
-            android:text="0000"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="26sp" />
+                <TextView
+                    android:id="@+id/gradeOne_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/hotrgb"
+                    android:text="00"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/gradeOne_total"
-            android:layout_marginLeft="2dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toEndOf="@+id/gradeOne_total"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="EGP/m"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="10sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/gradeOne_rate"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_toEndOf="@+id/gradeOne_rate"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="EGP"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/gradeOne_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/gradeOne_rate"
+                    android:layout_marginStart="40dp"
+                    android:layout_toEndOf="@+id/gradeOne_rate"
+                    android:fontFamily="@font/hotrgb"
+                    android:text="0000"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
 
-    <RelativeLayout
-        android:id="@+id/second_grade"
-        android:layout_width="190dp"
-        android:layout_height="220dp"
-        android:layout_alignTop="@+id/first_grade"
-        android:layout_alignParentEnd="true"
-        android:layout_marginLeft="200dp"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/grade_rec"
-        tools:visibility="visible">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/gradeOne_total"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_toEndOf="@+id/gradeOne_total"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="EGP/m"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
 
-        <Button
-            android:id="@+id/pen_gradetwo"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="17dp"
-            android:background="@drawable/icon_pen" />
+            </RelativeLayout>
 
-        <Button
-            android:id="@+id/circul_two"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@id/pen_gradetwo"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/grade_two"
-            android:fontFamily="@font/arbfonts_abdo_master_outline"
-            android:paddingTop="5dp"
-            android:text="2"
-            android:textColor="@color/colorDarkBlue"
-            android:textSize="40dp" />
+            <RelativeLayout
+                android:id="@+id/third_grade"
+                android:layout_width="175dp"
+                android:layout_height="215dp"
+                android:layout_below="@id/first_grade"
+                android:layout_alignStart="@+id/first_grade"
+                android:layout_alignEnd="@+id/first_grade"
+                android:background="@drawable/grade_rec">
 
-        <TextView
-            android:id="@+id/gradetwo_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/circul_two"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="00"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+                <Button
+                    android:id="@+id/pen_gradethere"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="23dp"
+                    android:background="@drawable/icon_pen" />
 
-        <TextView
-            android:id="@+id/gradetwo_student"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/gradetwo_count"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="-10dp"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="Students"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+                <Button
+                    android:id="@+id/circul_there"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_below="@id/pen_gradethere"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/grade_there"
+                    android:fontFamily="@font/arbfonts_abdo_master_outline"
+                    android:paddingTop="5dp"
+                    android:text="3"
+                    android:textColor="@color/colorDarkBlue"
+                    android:textSize="40dp" />
 
-        <ImageView
-            android:id="@+id/gradetwo_line"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/gradetwo_student"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="-10dp"
-            app:srcCompat="@drawable/line_one" />
+                <TextView
+                    android:id="@+id/gradethere_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/circul_there"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="00"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/gradetwo_rate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="25dp"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/hotrgb"
-            android:text="00"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="26sp" />
+                <TextView
+                    android:id="@+id/gradethere_student"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/gradethere_count"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="-10dp"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="Students"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/gradetwo_rate"
-            android:layout_marginLeft="2dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toEndOf="@+id/gradetwo_rate"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="EGP"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="10sp" />
+                <ImageView
+                    android:id="@+id/gradethere_line"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gradethere_student"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="-10dp"
+                    app:srcCompat="@drawable/line_one" />
 
-        <TextView
-            android:id="@+id/gradetwo_total"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/gradetwo_rate"
-            android:layout_marginStart="50dp"
-            android:layout_toEndOf="@+id/gradetwo_rate"
-            android:fontFamily="@font/hotrgb"
-            android:text="0000"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="26sp" />
+                <TextView
+                    android:id="@+id/gradethere_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/hotrgb"
+                    android:text="00"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/gradetwo_total"
-            android:layout_marginLeft="2dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toEndOf="@+id/gradetwo_total"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="EGP/m"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="10sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/gradethere_rate"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_toEndOf="@+id/gradethere_rate"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="EGP"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/gradethere_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/gradethere_rate"
+                    android:layout_marginStart="40dp"
+                    android:layout_toEndOf="@+id/gradethere_rate"
+                    android:fontFamily="@font/hotrgb"
+                    android:text="0000"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
 
-    <RelativeLayout
-        android:id="@+id/third_grade"
-        android:layout_width="190dp"
-        android:layout_height="220dp"
-        android:layout_below="@id/first_grade"
-        android:layout_marginLeft="5dp"
-        android:background="@drawable/grade_rec"
-        tools:visibility="visible">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/gradethere_total"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_toEndOf="@+id/gradethere_total"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="EGP/m"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
+            </RelativeLayout>
 
-        <Button
-            android:id="@+id/pen_gradethere"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="17dp"
-            android:background="@drawable/icon_pen" />
+            <RelativeLayout
+                android:id="@+id/second_grade"
+                android:layout_width="175dp"
+                android:layout_height="215dp"
+                android:layout_alignTop="@+id/first_grade"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/grade_rec">
 
-        <Button
-            android:id="@+id/circul_there"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@id/pen_gradethere"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/grade_there"
-            android:fontFamily="@font/arbfonts_abdo_master_outline"
-            android:paddingTop="5dp"
-            android:text="3"
-            android:textColor="@color/colorDarkBlue"
-            android:textSize="40dp" />
+                <Button
+                    android:id="@+id/pen_gradetwo"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="23dp"
+                    android:background="@drawable/icon_pen" />
 
-        <TextView
-            android:id="@+id/gradethere_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/circul_there"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="00"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+                <Button
+                    android:id="@+id/circul_two"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_below="@id/pen_gradetwo"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/grade_two"
+                    android:fontFamily="@font/arbfonts_abdo_master_outline"
+                    android:paddingTop="5dp"
+                    android:text="2"
+                    android:textColor="@color/colorDarkBlue"
+                    android:textSize="40dp" />
 
-        <TextView
-            android:id="@+id/gradethere_student"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/gradethere_count"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="-10dp"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="Students"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/gradetwo_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/circul_two"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="00"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
 
-        <ImageView
-            android:id="@+id/gradethere_line"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/gradethere_student"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="-10dp"
-            app:srcCompat="@drawable/line_one" />
+                <TextView
+                    android:id="@+id/gradetwo_student"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/gradetwo_count"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="-10dp"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="Students"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/gradethere_rate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="25dp"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/hotrgb"
-            android:text="00"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="26sp" />
+                <ImageView
+                    android:id="@+id/gradetwo_line"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gradetwo_student"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="-10dp"
+                    app:srcCompat="@drawable/line_one" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/gradethere_rate"
-            android:layout_marginLeft="2dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toEndOf="@+id/gradethere_rate"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="EGP"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="10sp" />
+                <TextView
+                    android:id="@+id/gradetwo_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/hotrgb"
+                    android:text="00"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
 
-        <TextView
-            android:id="@+id/gradethere_total"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/gradethere_rate"
-            android:layout_marginStart="50dp"
-            android:layout_toEndOf="@+id/gradethere_rate"
-            android:fontFamily="@font/hotrgb"
-            android:text="0000"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="26sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/gradetwo_rate"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_toEndOf="@+id/gradetwo_rate"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="EGP"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/gradethere_total"
-            android:layout_marginLeft="2dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toEndOf="@+id/gradethere_total"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="EGP/m"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="10sp" />
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/gradetwo_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/gradetwo_rate"
+                    android:layout_marginStart="40dp"
+                    android:layout_toEndOf="@+id/gradetwo_rate"
+                    android:fontFamily="@font/hotrgb"
+                    android:text="0000"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
 
-    <RelativeLayout
-        android:id="@+id/private_grade"
-        android:layout_width="190dp"
-        android:layout_height="220dp"
-        android:layout_below="@id/second_grade"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/grade_rec"
-        tools:visibility="visible">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/gradetwo_total"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_toEndOf="@+id/gradetwo_total"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="EGP/m"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
 
-        <Button
-            android:id="@+id/pen_gradeprivate"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="17dp"
-            android:background="@drawable/icon_pen" />
+            </RelativeLayout>
 
-        <Button
-            android:id="@+id/circul_private"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@id/pen_gradeprivate"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/grade_privet"
-            android:fontFamily="@font/arbfonts_abdo_master_outline"
-            android:paddingLeft="5dp"
-            android:paddingTop="5dp"
-            android:text="P"
-            android:textColor="@color/colorDarkBlue"
-            android:textSize="40dp" />
+            <RelativeLayout
+                android:id="@+id/private_grade"
+                android:layout_width="175dp"
+                android:layout_height="215dp"
+                android:layout_below="@id/second_grade"
+                android:layout_alignStart="@+id/second_grade"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/grade_rec">
 
-        <TextView
-            android:id="@+id/gradeprivate_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/circul_private"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="00"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+                <Button
+                    android:id="@+id/pen_gradeprivate"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="23dp"
+                    android:background="@drawable/icon_pen" />
 
-        <TextView
-            android:id="@+id/gradeprivate_student"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/gradeprivate_count"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="-10dp"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="Students"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="20sp" />
+                <Button
+                    android:id="@+id/circul_private"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_below="@id/pen_gradeprivate"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/grade_privet"
+                    android:fontFamily="@font/arbfonts_abdo_master_outline"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="5dp"
+                    android:text="P"
+                    android:textColor="@color/colorDarkBlue"
+                    android:textSize="40dp" />
 
-        <ImageView
-            android:id="@+id/gradeprivate_line"
-            android:layout_width="70dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/gradeprivate_student"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="-10dp"
-            app:srcCompat="@drawable/line_one" />
+                <TextView
+                    android:id="@+id/gradeprivate_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/circul_private"
+                    android:layout_centerHorizontal="true"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="00"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/gradeprivate_rate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="25dp"
-            android:layout_marginBottom="15dp"
-            android:fontFamily="@font/hotrgb"
-            android:text="00"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="26sp" />
+                <TextView
+                    android:id="@+id/gradeprivate_student"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/gradeprivate_count"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="-10dp"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="Students"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/gradeprivate_rate"
-            android:layout_marginLeft="2dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toEndOf="@+id/gradeprivate_rate"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="EGP"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="10sp" />
+                <ImageView
+                    android:id="@+id/gradeprivate_line"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/gradeprivate_student"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="-10dp"
+                    app:srcCompat="@drawable/line_one" />
 
-        <TextView
-            android:id="@+id/gradeprivate_total"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/gradeprivate_rate"
-            android:layout_marginStart="50dp"
-            android:layout_toEndOf="@+id/gradeprivate_rate"
-            android:fontFamily="@font/hotrgb"
-            android:text="0000"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="26sp" />
+                <TextView
+                    android:id="@+id/gradeprivate_rate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/hotrgb"
+                    android:text="00"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/gradeprivate_total"
-            android:layout_marginLeft="2dp"
-            android:layout_marginBottom="4dp"
-            android:layout_toEndOf="@+id/gradeprivate_total"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="EGP/m"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="10sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/gradeprivate_rate"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_toEndOf="@+id/gradeprivate_rate"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="EGP"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/gradeprivate_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/gradeprivate_rate"
+                    android:layout_marginStart="40dp"
+                    android:layout_toEndOf="@+id/gradeprivate_rate"
+                    android:fontFamily="@font/hotrgb"
+                    android:text="0000"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/third_grade"
-        android:layout_alignEnd="@+id/private_grade"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/total_rec"
-        tools:visibility="visible">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/gradeprivate_total"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_toEndOf="@+id/gradeprivate_total"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="EGP/m"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="10sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="65dp"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="TOTAL IS"
-            android:textAlignment="center"
-            android:textColor="@color/colorWhite"
-            android:textSize="26sp" />
+            </RelativeLayout>
 
-        <TextView
-            android:id="@+id/total_salary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="190dp"
-            android:layout_marginTop="6dp"
-            android:fontFamily="@font/hotrgb"
-            android:text="0000"
-            android:textAlignment="center"
-            android:textColor="@color/colorLightPink"
-            android:textSize="38sp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/private_grade"
+                android:background="@drawable/total_rec"
+                tools:visibility="visible">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="27dp"
-            android:layout_toEndOf="@+id/total_salary"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:text="EGP/m"
-            android:textAlignment="center"
-            android:textColor="@color/colorLightPink"
-            android:textSize="14sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="65dp"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="TOTAL IS"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="26sp" />
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/total_salary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="190dp"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/hotrgb"
+                    android:text="0000"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorLightPink"
+                    android:textSize="38sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="27dp"
+                    android:layout_toEndOf="@+id/total_salary"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="EGP/m"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorLightPink"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

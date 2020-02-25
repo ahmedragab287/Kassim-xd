@@ -149,7 +149,9 @@ public class grades extends AppCompatActivity {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(grades.this,working.class));
+                Intent i = new Intent(grades.this,setting.class);
+                i.putExtra("from_where", 1);
+                startActivity(i);
                 finish();
             }
         });

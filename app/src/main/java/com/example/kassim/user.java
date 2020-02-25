@@ -3,7 +3,9 @@ package com.example.kassim;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,7 +26,51 @@ public class user extends AppCompatActivity {
         btn_first_grade();          btn_second_grade();
         btn_third_grade();          btn_private_grade();
 
+        btn_price_setting();
+
     }
+
+    private void btn_price_setting() {
+        Button pen_gradeone = findViewById(R.id.pen_gradeone);
+        pen_gradeone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                to_setting();
+            }
+        });
+
+        Button pen_gradetwo = findViewById(R.id.pen_gradetwo);
+        pen_gradetwo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                to_setting();
+            }
+        });
+
+        Button pen_gradethere = findViewById(R.id.pen_gradethere);
+        pen_gradethere.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                to_setting();
+            }
+        });
+
+        Button pen_gradeprivate = findViewById(R.id.pen_gradeprivate);
+        pen_gradeprivate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                to_setting();
+            }
+        });
+    }
+
+    private void to_setting() {
+        Intent i = new Intent(user.this,setting.class);
+        i.putExtra("from_where", 2);
+        startActivity(i);
+        finish();
+    }
+
 
     private void count_all() {
         DatabaseHelper db = new DatabaseHelper(user.this);
@@ -52,10 +98,11 @@ public class user extends AppCompatActivity {
         TextView gradeThere_rate = findViewById(R.id.gradethere_rate);
         TextView gradePrivate_rate = findViewById(R.id.gradeprivate_rate);
 
-        int gradeOne_rate_int = 60;
-        int gradeTwo_rate_int = 80;
-        int gradeThere_rate_int = 100;
-        int gradePrivate_rate_int = 200;
+        SharedPreferences preferences = getSharedPreferences("price",MODE_PRIVATE);
+        int gradeOne_rate_int = Integer.valueOf(preferences.getString("price_grade_one","0"));
+        int gradeTwo_rate_int = Integer.valueOf(preferences.getString("price_grade_two","0"));
+        int gradeThere_rate_int = Integer.valueOf(preferences.getString("price_grade_there","0"));
+        int gradePrivate_rate_int = 100;
 
         gradeOne_rate.setText(String.valueOf(gradeOne_rate_int));
         gradeTwo_rate.setText(String.valueOf(gradeTwo_rate_int));

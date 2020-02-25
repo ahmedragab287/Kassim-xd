@@ -75,13 +75,15 @@ public class loginscreen extends AppCompatActivity {
         Button login = findViewById(R.id.btn_login);
         final EditText username = findViewById(R.id.etxt_username);
         final EditText password = findViewById(R.id.etxt_password);
+        SharedPreferences preferences = getSharedPreferences("user_password",MODE_PRIVATE);
+        final String user_password= preferences.getString("password","");
 
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v)
             {
 
                 if (username.getText().toString().equals("")&&
-                        password.getText().toString().equals("")) {
+                        password.getText().toString().equals(user_password)) {
                     FancyToast.makeText(loginscreen.this,"Welcome Dr.Kassim "
                             ,FancyToast.LENGTH_SHORT,FancyToast.DEFAULT,false).show();
 
