@@ -66,13 +66,13 @@
 
         <Button
             android:id="@+id/pen_gradeOne"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="17dp"
             android:layout_marginEnd="17dp"
-            android:background="@drawable/icon_pen" />
+            android:background="@drawable/ic_edit" />
 
         <Button
             android:id="@+id/circul_one"
@@ -186,13 +186,13 @@
 
         <Button
             android:id="@+id/pen_gradetwo"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="17dp"
             android:layout_marginEnd="17dp"
-            android:background="@drawable/icon_pen" />
+            android:background="@drawable/ic_edit" />
 
         <Button
             android:id="@+id/circul_two"
@@ -304,13 +304,13 @@
 
         <Button
             android:id="@+id/pen_gradethere"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="17dp"
             android:layout_marginEnd="17dp"
-            android:background="@drawable/icon_pen" />
+            android:background="@drawable/ic_edit" />
 
         <Button
             android:id="@+id/circul_there"
@@ -423,13 +423,13 @@
 
         <Button
             android:id="@+id/pen_gradeprivate"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="17dp"
             android:layout_marginEnd="17dp"
-            android:background="@drawable/icon_pen" />
+            android:background="@drawable/ic_edit" />
 
         <Button
             android:id="@+id/circul_private"

@@ -156,4 +156,19 @@
         app:layout_constraintTop_toBottomOf="@+id/empty_imageview"
         android:visibility="gone"/>
 
+    <TextView
+        android:id="@+id/txt_count_studernt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/arbfonts_abdo_master_extrabold"
+        android:text="999"
+        android:layout_marginRight="120dp"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textColor="@color/colorDarkGray"
+        app:layout_constraintBottom_toBottomOf="@+id/spin_area"
+        app:layout_constraintEnd_toStartOf="@+id/spin_area"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/spin_area" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

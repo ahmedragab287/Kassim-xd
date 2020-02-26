@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -16,14 +17,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class UpdateActivity extends AppCompatActivity {
 
-
-    String id, student_name;
-    DatabaseHelper db = new DatabaseHelper(UpdateActivity.this);
-    EditText et_student_name , et_student_phone;
-    CheckBox cb_aug , cb_sep , cb_oct , cb_nov , cb_dec , cb_jan , cb_feb , cb_mar , cb_apr ,
+    private String id, student_name;
+    private DatabaseHelper db = new DatabaseHelper(UpdateActivity.this);
+    private EditText et_student_name , et_student_phone;
+    private CheckBox cb_aug , cb_sep , cb_oct , cb_nov , cb_dec , cb_jan , cb_feb , cb_mar , cb_apr ,
              cb_may , cb_note1 , cb_note2 , cb_rev1 , cb_rev2 ;
-    SharedPreferences preferences;
-    String activity_num ;
+    private SharedPreferences preferences;
+    private String activity_num ;
+    Spinner spinner_student_country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +51,24 @@ public class UpdateActivity extends AppCompatActivity {
         cb_note2 =findViewById(R.id.cb_note2_update);
         cb_rev1 =findViewById(R.id.cb_rev1_update);
         cb_rev2 =findViewById(R.id.cb_rev2_update);
-
+        spinner_student_country = findViewById(R.id.et_student_country_update);
         student_name = getIntent().getStringExtra("student_name");
         id = getIntent().getStringExtra("id");
+
+
 
         btn_back_update();
         getAndSetIntentData();
         btn_update();
         btn_delete();
+        set_spinner();
+    }
+
+    private void set_spinner() {
+        String[] country = { "Badaway" , "Biddin" , "Salamon" , "Sobra bidin" , "Mansoura"};
+        ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, country);
+        aa.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        spinner_student_country.setAdapter(aa);
     }
 
     void btn_update(){
@@ -71,6 +82,7 @@ public class UpdateActivity extends AppCompatActivity {
                 db.updateData( Integer.parseInt(activity_num), id,
                         et_student_name.getText().toString(),
                         et_student_phone.getText().toString(),
+                        spinner_student_country.getSelectedItem().toString().trim(),
                         cb_aug.isChecked()?1:0,
                         cb_sep.isChecked()?1:0,
                         cb_oct.isChecked()?1:0,

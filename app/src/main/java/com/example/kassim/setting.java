@@ -23,7 +23,8 @@ public class setting extends AppCompatActivity {
 
         preferences = getSharedPreferences("price",MODE_PRIVATE);
         from_where = getIntent().getIntExtra("from_where", 0);
-
+        price_one =findViewById(R.id.price_one);
+        price_one.requestFocus();
 
         set_price();
         btn_back();
@@ -33,13 +34,13 @@ public class setting extends AppCompatActivity {
 
     private void set_price() {
         price_one =findViewById(R.id.price_one);
-        price_one.setText(preferences.getString("price_grade_one",""));
+        price_one.setText(preferences.getString("price_grade_one","0"));
 
         price_two =findViewById(R.id.price_two);
-        price_two.setText(preferences.getString("price_grade_two",""));
+        price_two.setText(preferences.getString("price_grade_two","0"));
 
         price_there =findViewById(R.id.price_there);
-        price_there.setText(preferences.getString("price_grade_there",""));
+        price_there.setText(preferences.getString("price_grade_there","0"));
     }
 
     private void btn_save_price() {
@@ -80,13 +81,14 @@ public class setting extends AppCompatActivity {
                 SharedPreferences.Editor editor = preferences.edit();
 
                 EditText cu_pass_editxt = findViewById(R.id.cu_pass_editxt);
-                EditText new_pass_editxt = findViewById(R.id.conf_pass_editxt);
+                EditText new_pass_editxt = findViewById(R.id.new_pass_editxt);
                 EditText conf_pass_editxt = findViewById(R.id.conf_pass_editxt);
 
                 if (cu_pass_editxt.getText().toString().equals
                         (preferences.getString("password",""))){
 
                     if (new_pass_editxt.getText().toString().equals(conf_pass_editxt.getText().toString())){
+
                         editor.putString("password",new_pass_editxt.getText().toString());
                         editor.apply();
                         FancyToast.makeText(setting.this, "Password Changed Successfully!", FancyToast.LENGTH_LONG, FancyToast.SUCCESS, false).show();

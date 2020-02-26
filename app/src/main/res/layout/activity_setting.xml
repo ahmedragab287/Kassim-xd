@@ -58,253 +58,260 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <RelativeLayout
-        android:id="@+id/layout_price"
-        android:layout_width="wrap_content"
-        android:layout_height="295dp"
-        android:background="@drawable/cate_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header_update">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="70dp">
 
-        <TextView
-            android:id="@+id/edit_price_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="105dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="105dp"
-            android:text="Edit the price"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/st1_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/edit_price_text"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="15dp"
-            android:text="1st"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+            <RelativeLayout
+                android:id="@+id/layout_price"
+                android:layout_width="wrap_content"
+                android:layout_height="280dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/cate_background">
 
-        <TextView
-            android:id="@+id/st2_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/st1_text"
-            android:layout_alignStart="@+id/st1_text"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="25dp"
-            android:text="2nd"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+                <TextView
+                    android:id="@+id/edit_price_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="105dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="105dp"
+                    android:text="Edit the price"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/st2_text"
-            android:layout_alignStart="@+id/st2_text"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="22dp"
-            android:text="3th"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+                <TextView
+                    android:id="@+id/st1_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edit_price_text"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="15dp"
+                    android:text="1st"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
 
-        <EditText
-            android:id="@+id/price_one"
-            android:layout_width="263dp"
-            android:layout_height="52dp"
-            android:layout_below="@+id/edit_price_text"
-            android:layout_marginStart="22dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginTop="10dp"
-            android:layout_toEndOf="@+id/st1_text"
-            android:background="@drawable/price_text"
-            android:fontFamily="@font/arbfonts_abdo_master_medium"
-            android:hint="Grade one"
-            android:inputType="text"
-            android:paddingLeft="30dp"
-            android:paddingRight="100dp"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+                <TextView
+                    android:id="@+id/st2_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/st1_text"
+                    android:layout_alignStart="@+id/st1_text"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="25dp"
+                    android:text="2nd"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
 
-        <EditText
-            android:id="@+id/price_two"
-            android:layout_width="273dp"
-            android:layout_height="52dp"
-            android:layout_below="@+id/price_one"
-            android:layout_alignStart="@+id/price_one"
-            android:layout_alignEnd="@+id/price_one"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="100dp"
-            android:background="@drawable/price_text"
-            android:fontFamily="@font/arbfonts_abdo_master_medium"
-            android:hint="Grade Two"
-            android:inputType="text"
-            android:paddingLeft="30dp"
-            android:paddingRight="100dp"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/st2_text"
+                    android:layout_alignStart="@+id/st2_text"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="22dp"
+                    android:text="3th"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
 
-        <EditText
-            android:id="@+id/price_there"
-            android:layout_width="273dp"
-            android:layout_height="52dp"
-            android:layout_below="@+id/price_two"
-            android:layout_alignStart="@+id/price_two"
-            android:layout_alignEnd="@+id/price_two"
-            android:layout_marginStart="0dp"
-            android:layout_marginLeft="100dp"
-            android:layout_marginEnd="0dp"
-            android:background="@drawable/price_text"
-            android:fontFamily="@font/arbfonts_abdo_master_medium"
-            android:hint="Grade There"
-            android:inputType="text"
-            android:paddingLeft="30dp"
-            android:paddingRight="100dp"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+                <EditText
+                    android:id="@+id/price_one"
+                    android:layout_width="263dp"
+                    android:layout_height="52dp"
+                    android:layout_below="@+id/edit_price_text"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/st1_text"
+                    android:background="@drawable/price_text"
+                    android:fontFamily="@font/arbfonts_abdo_master_medium"
+                    android:hint="Grade one"
+                    android:inputType="number"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="100dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/save_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/price_there"
-            android:layout_alignEnd="@+id/price_there"
-            android:text="Save"
-            android:textColor="@color/white"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:textSize="23dp"
-            android:background="@drawable/red_button" />
+                <EditText
+                    android:id="@+id/price_two"
+                    android:layout_width="273dp"
+                    android:layout_height="52dp"
+                    android:layout_below="@+id/price_one"
+                    android:layout_alignStart="@+id/price_one"
+                    android:layout_alignEnd="@+id/price_one"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="100dp"
+                    android:background="@drawable/price_text"
+                    android:fontFamily="@font/arbfonts_abdo_master_medium"
+                    android:hint="Grade Two"
+                    android:inputType="number"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="100dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
-    </RelativeLayout>
+                <EditText
+                    android:id="@+id/price_there"
+                    android:layout_width="273dp"
+                    android:layout_height="52dp"
+                    android:layout_below="@+id/price_two"
+                    android:layout_alignStart="@+id/price_two"
+                    android:layout_alignEnd="@+id/price_two"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginLeft="100dp"
+                    android:layout_marginEnd="0dp"
+                    android:background="@drawable/price_text"
+                    android:fontFamily="@font/arbfonts_abdo_master_medium"
+                    android:hint="Grade There"
+                    android:inputType="number"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="100dp"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:background="@drawable/cate_background_user"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_price">
+                <Button
+                    android:id="@+id/save_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/price_there"
+                    android:layout_alignEnd="@+id/price_there"
+                    android:background="@drawable/red_button"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="Save"
+                    android:textColor="@color/white"
+                    android:textSize="23dp" />
 
-        <TextView
-            android:id="@+id/edit_password"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            </RelativeLayout>
 
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="100dp"
-            android:text="Change User"
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="335dp"
+                android:background="@drawable/cate_background_user">
 
-        <TextView
-            android:id="@+id/cu_pass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/edit_password"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="15dp"
-            android:text="Current Password "
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+                <TextView
+                    android:id="@+id/edit_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-        <EditText
-            android:id="@+id/cu_pass_editxt"
-            android:layout_width="320dp"
-            android:layout_height="52dp"
-            android:layout_below="@+id/cu_pass"
-            android:layout_alignStart="@+id/cu_pass"
-            android:layout_marginLeft="-20dp"
-            android:layout_marginTop="-5dp"
-            android:background="@drawable/user_pass"
-            android:fontFamily="@font/arbfonts_abdo_master_medium"
-            android:inputType="textPassword"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="100dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="100dp"
+                    android:text="Change User"
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
 
-        <TextView
-            android:id="@+id/new_pass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cu_pass_editxt"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="-10dp"
-            android:text="New Password "
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+                <TextView
+                    android:id="@+id/cu_pass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edit_password"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="15dp"
+                    android:text="Current Password "
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
 
-        <EditText
-            android:id="@+id/new_pass_editxt"
-            android:layout_width="320dp"
-            android:layout_height="52dp"
-            android:layout_below="@+id/new_pass"
-            android:layout_alignStart="@+id/new_pass"
-            android:layout_marginLeft="-20dp"
-            android:layout_marginTop="-5dp"
-            android:background="@drawable/user_pass"
-            android:fontFamily="@font/arbfonts_abdo_master_medium"
-            android:inputType="textPassword"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+                <EditText
+                    android:id="@+id/cu_pass_editxt"
+                    android:layout_width="320dp"
+                    android:layout_height="52dp"
+                    android:layout_below="@+id/cu_pass"
+                    android:layout_alignStart="@+id/cu_pass"
+                    android:layout_marginLeft="-20dp"
+                    android:layout_marginTop="-5dp"
+                    android:background="@drawable/user_pass"
+                    android:fontFamily="@font/arbfonts_abdo_master_medium"
+                    android:inputType="textPassword"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/conf_pass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/new_pass_editxt"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="-10dp"
-            android:text="New Password "
-            android:textColor="@color/white"
-            android:textSize="22sp" />
+                <TextView
+                    android:id="@+id/new_pass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cu_pass_editxt"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="-10dp"
+                    android:text="New Password "
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
 
-        <EditText
-            android:id="@+id/conf_pass_editxt"
-            android:layout_width="320dp"
-            android:layout_height="52dp"
-            android:layout_below="@+id/conf_pass"
-            android:layout_alignStart="@+id/conf_pass"
-            android:layout_marginLeft="-20dp"
-            android:layout_marginTop="-5dp"
-            android:background="@drawable/user_pass"
-            android:fontFamily="@font/arbfonts_abdo_master_medium"
-            android:inputType="textPassword"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
+                <EditText
+                    android:id="@+id/new_pass_editxt"
+                    android:layout_width="320dp"
+                    android:layout_height="52dp"
+                    android:layout_below="@+id/new_pass"
+                    android:layout_alignStart="@+id/new_pass"
+                    android:layout_marginLeft="-20dp"
+                    android:layout_marginTop="-5dp"
+                    android:background="@drawable/user_pass"
+                    android:fontFamily="@font/arbfonts_abdo_master_medium"
+                    android:inputType="textPassword"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
-        <Button
-            android:id="@+id/save_user"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/conf_pass_editxt"
-            android:layout_alignEnd="@+id/conf_pass_editxt"
-            android:layout_marginTop="-3dp"
-            android:text="Save"
-            android:textColor="@color/white"
-            android:fontFamily="@font/arbfonts_abdo_master_book"
-            android:textSize="23dp"
-            android:background="@drawable/red_button" />
+                <TextView
+                    android:id="@+id/conf_pass"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/new_pass_editxt"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="-10dp"
+                    android:text="New Password "
+                    android:textColor="@color/white"
+                    android:textSize="22sp" />
 
-    </RelativeLayout>
+                <EditText
+                    android:id="@+id/conf_pass_editxt"
+                    android:layout_width="320dp"
+                    android:layout_height="52dp"
+                    android:layout_below="@+id/conf_pass"
+                    android:layout_alignStart="@+id/conf_pass"
+                    android:layout_marginLeft="-20dp"
+                    android:layout_marginTop="-5dp"
+                    android:background="@drawable/user_pass"
+                    android:fontFamily="@font/arbfonts_abdo_master_medium"
+                    android:inputType="textPassword"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/save_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/conf_pass_editxt"
+                    android:layout_alignEnd="@+id/conf_pass_editxt"
+                    android:layout_marginTop="-3dp"
+                    android:background="@drawable/red_button"
+                    android:fontFamily="@font/arbfonts_abdo_master_book"
+                    android:text="Save"
+                    android:textColor="@color/white"
+                    android:textSize="23dp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,57 +18,55 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="32dp"/>
 
-    <RelativeLayout
-        android:id="@+id/photo_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_back"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="-70dp">
-
-        <ImageView
-            android:id="@+id/photo"
-            android:layout_width="130dp"
-            android:layout_height="130dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="40dp"
-            app:srcCompat="@drawable/photo" />
-
-        <ImageView
-            android:id="@+id/photo_ring"
-            android:layout_width="145dp"
-            android:layout_height="145dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="33dp"
-            app:srcCompat="@drawable/circle" />
-
-        <TextView
-            android:id="@+id/txt_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/photo_ring"
-            android:layout_marginTop="2dp"
-            android:elevation="5dp"
-            android:fontFamily="@font/arbfonts_abdo_master_medium"
-            android:text="Kassim Ahmed"
-            android:textColor="@color/colorWhite"
-            android:textSize="23sp" />
-
-    </RelativeLayout>
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/photo_layout">
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <RelativeLayout
+                android:id="@+id/photo_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true">
+
+                <ImageView
+                    android:id="@+id/photo"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="40dp"
+                    app:srcCompat="@drawable/photo" />
+
+                <ImageView
+                    android:id="@+id/photo_ring"
+                    android:layout_width="145dp"
+                    android:layout_height="145dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="33dp"
+                    app:srcCompat="@drawable/circle" />
+
+                <TextView
+                    android:id="@+id/txt_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/photo_ring"
+                    android:layout_marginTop="2dp"
+                    android:elevation="5dp"
+                    android:fontFamily="@font/arbfonts_abdo_master_medium"
+                    android:text="Kassim Ahmed"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="23sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/first_grade"
                 android:layout_width="175dp"
                 android:layout_height="215dp"
+                android:layout_below="@id/photo_layout"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="5dp"
                 android:background="@drawable/grade_rec"
@@ -76,13 +74,13 @@
 
                 <Button
                     android:id="@+id/pen_gradeone"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="23dp"
-                    android:background="@drawable/icon_pen" />
+                    android:background="@drawable/ic_edit" />
 
                 <Button
                     android:id="@+id/circul_one"
@@ -196,13 +194,13 @@
 
                 <Button
                     android:id="@+id/pen_gradethere"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="23dp"
-                    android:background="@drawable/icon_pen" />
+                    android:background="@drawable/ic_edit" />
 
                 <Button
                     android:id="@+id/circul_there"
@@ -314,13 +312,13 @@
 
                 <Button
                     android:id="@+id/pen_gradetwo"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="23dp"
-                    android:background="@drawable/icon_pen" />
+                    android:background="@drawable/ic_edit" />
 
                 <Button
                     android:id="@+id/circul_two"
@@ -434,13 +432,13 @@
 
                 <Button
                     android:id="@+id/pen_gradeprivate"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="23dp"
-                    android:background="@drawable/icon_pen" />
+                    android:background="@drawable/ic_edit" />
 
                 <Button
                     android:id="@+id/circul_private"

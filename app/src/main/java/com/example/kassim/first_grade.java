@@ -46,7 +46,6 @@ public class first_grade extends AppCompatActivity  {
         btn_back();         btn_main_float();
         btn_add();          btn_delete_all();
 
-
         recyclerView = findViewById(R.id.recyclerView);
 
         grade_name =findViewById(R.id.grade_name);
@@ -65,7 +64,9 @@ public class first_grade extends AppCompatActivity  {
         student_name = new ArrayList<>();
 
         spin_area_change();
+
     }
+
 
 
     @Override
@@ -92,6 +93,12 @@ public class first_grade extends AppCompatActivity  {
                 recyclerView.setAdapter(customAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(first_grade.this));
                 storeDataInArray(activity_num,spin_area.getSelectedItem().toString());
+                if (recyclerView.getAdapter() != null) {
+                    int count = recyclerView.getAdapter().getItemCount();
+                    TextView txt_count_studernt = findViewById(R.id.txt_count_studernt);
+                    txt_count_studernt.setText(String.valueOf(count));
+                }
+
 
             }
 

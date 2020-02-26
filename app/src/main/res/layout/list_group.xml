@@ -20,7 +20,7 @@
             android:background="@drawable/list_group"
             android:fontFamily="@font/arbfonts_hacen_samra"
             android:paddingTop="7dp"
-            android:paddingEnd="90dp"
+            android:paddingEnd="20dp"
             android:paddingStart="20dp"
             android:text="STUDENT NAME"
             android:textDirection="rtl"
@@ -31,6 +31,7 @@
 
         <TextView
             android:id="@+id/item_id"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/arbfonts_hacen_samra"

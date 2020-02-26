@@ -223,7 +223,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    void updateData(int activity_num ,String row_id, String student_name , String student_phone  ,
+    void updateData(int activity_num ,String row_id, String student_name , String student_phone  , String student_country ,
                     int mt_aug , int mt_sep , int mt_oct , int mt_nov , int mt_dec,
                     int mt_jan , int mt_feb , int mt_mar , int mt_apr , int mt_may,
                     int note1  , int note2  , int rev1   , int rev2){
@@ -231,7 +231,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(col_NAME, student_name);
         cv.put(col_PHONE, student_phone);
-        //cv.put(col_PHONE, student_phone);
+        cv.put(col_COUNRTY, student_country);
         cv.put(col_aug, mt_aug);
         cv.put(col_sep, mt_sep);
         cv.put(col_oct, mt_oct);
