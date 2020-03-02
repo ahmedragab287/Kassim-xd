@@ -488,39 +488,14 @@
                     android:layout_marginTop="-10dp"
                     app:srcCompat="@drawable/line_one" />
 
-                <TextView
-                    android:id="@+id/gradeprivate_rate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginBottom="15dp"
-                    android:fontFamily="@font/hotrgb"
-                    android:text="00"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="26sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/gradeprivate_rate"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_toEndOf="@+id/gradeprivate_rate"
-                    android:fontFamily="@font/arbfonts_abdo_master_book"
-                    android:text="EGP"
-                    android:textAlignment="center"
-                    android:textColor="@color/colorWhite"
-                    android:textSize="10sp" />
 
                 <TextView
                     android:id="@+id/gradeprivate_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/gradeprivate_rate"
-                    android:layout_marginStart="40dp"
-                    android:layout_toEndOf="@+id/gradeprivate_rate"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="15dp"
                     android:fontFamily="@font/hotrgb"
                     android:text="0000"
                     android:textAlignment="center"
@@ -588,5 +563,6 @@
 
         </RelativeLayout>
     </ScrollView>
+
 
 </RelativeLayout>

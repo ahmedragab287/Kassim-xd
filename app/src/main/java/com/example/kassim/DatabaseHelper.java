@@ -18,6 +18,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String Table_Grade2 ="Grade2_Table";
     private static final String Table_Grade3 ="Grade3_Table";
     private static final String Table_GradeP ="GradeP_Table";
+    private static final String col_private_price = "col_private_price";
+    private static final String col_private_year = "col_private_year";
 
     private static final String ID ="ID";
     private static final String col_NAME ="NAME";
@@ -33,7 +35,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String col_mar = "month_mar";
     private static final String col_apr = "month_apr";
     private static final String col_may = "month_may";
-    private static final String col_private_price = "private_price";
     private static final String col_note1 = "month_note1";
     private static final String col_note2 = "month_note2";
     private static final String col_rev1 = "month_rev1";
@@ -128,7 +129,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 col_note2 + " INTEGER ,"+
                 col_rev1  + " INTEGER ,"+
                 col_rev2  + " INTEGER ,"+
-                col_private_price + " INTEGER " +
+                col_private_price  + " INTEGER ,"+
+                col_private_year  + " INTEGER "+
                 ")";
         db.execSQL(CREATE_TABLE_Grade1);
         db.execSQL(CREATE_TABLE_Grade2);
@@ -145,13 +147,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    void add_student(int activity_num , String student_name , String student_phone , String student_country ,
+     void add_student(int activity_num  , String student_name , String student_phone , String student_country ,
                      int mt_aug , int mt_sep , int mt_oct , int mt_nov , int mt_dec,
                      int mt_jan , int mt_feb , int mt_mar , int mt_apr , int mt_may,
-                     int note1  , int note2  , int rev1   , int rev2){
+                     int note1  , int note2  , int rev1   , int rev2 , String price , String year ){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
-
         cv.put(col_NAME, student_name);
         cv.put(col_PHONE, student_phone);
         cv.put(col_COUNRTY,student_country);
@@ -165,9 +166,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         long result =0;
         if (activity_num == 1){ result = db.insert(Table_Grade1, null, cv);}
-        if (activity_num == 2){ result = db.insert(Table_Grade2, null, cv);}
-        if (activity_num == 3){ result = db.insert(Table_Grade3, null, cv);}
-        if (activity_num == 4){ result = db.insert(Table_GradeP, null, cv);}
+        else if (activity_num == 2){ result = db.insert(Table_Grade2, null, cv);}
+        else if (activity_num == 3){ result = db.insert(Table_Grade3, null, cv);}
+        else if (activity_num == 4){
+            cv.put(col_private_price,Integer.parseInt(price));
+            cv.put(col_private_year,Integer.parseInt(year));
+            result = db.insert(Table_GradeP, null, cv);
+        }
 
 
             if (result == -1) {
@@ -178,55 +183,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-
-     public int count(int activity_num) {
-        int student_count = 0; String sql = "";
-
-        if (activity_num == 1) { sql = "SELECT COUNT(*) FROM " + Table_Grade1;}
-        else if (activity_num == 2){ sql = "SELECT COUNT(*) FROM " + Table_Grade2; }
-        else if (activity_num == 3){ sql = "SELECT COUNT(*) FROM " + Table_Grade3; }
-        else if (activity_num == 4){ sql = "SELECT COUNT(*) FROM " + Table_GradeP; }
-
-        Cursor cursor = getReadableDatabase().rawQuery(sql, null);
-        if (cursor.getCount() > 0) {
-            cursor.moveToFirst();
-            student_count = cursor.getInt(0);
-        }
-
-        cursor.close();
-        return student_count;
-    }
-
-
-    Cursor readalldata(int activity_num , String area){
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = null;
-
-        if (area == "All"){
-            if (db !=null ){
-                if (activity_num ==1)     {cursor = db.rawQuery("SELECT * FROM "+Table_Grade1,null);}
-                else if (activity_num ==2){cursor = db.rawQuery("SELECT * FROM "+Table_Grade2,null);}
-                else if (activity_num ==3){cursor = db.rawQuery("SELECT * FROM "+Table_Grade3,null);}
-                else if (activity_num ==4){cursor = db.rawQuery("SELECT * FROM "+Table_GradeP,null);}
-            }
-        }
-        else {
-            if (db !=null ){
-                if (activity_num ==1)     {cursor = db.rawQuery("SELECT * FROM "+Table_Grade1+" WHERE "+col_COUNRTY+" = '"+area+"'",null);}
-                else if (activity_num ==2){cursor = db.rawQuery("SELECT * FROM "+Table_Grade2+" WHERE "+col_COUNRTY+" = '"+area+"'",null);}
-                else if (activity_num ==3){cursor = db.rawQuery("SELECT * FROM "+Table_Grade3+" WHERE "+col_COUNRTY+" = '"+area+"'",null);}
-                else if (activity_num ==4){cursor = db.rawQuery("SELECT * FROM "+Table_GradeP+" WHERE "+col_COUNRTY+" = '"+area+"'",null);}
-            }
-        }
-
-        return cursor;
-    }
-
-
     void updateData(int activity_num ,String row_id, String student_name , String student_phone  , String student_country ,
                     int mt_aug , int mt_sep , int mt_oct , int mt_nov , int mt_dec,
                     int mt_jan , int mt_feb , int mt_mar , int mt_apr , int mt_may,
-                    int note1  , int note2  , int rev1   , int rev2){
+                    int note1  , int note2  , int rev1   , int rev2 , String price , String year ){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(col_NAME, student_name);
@@ -249,24 +209,68 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         long result = 0;
 
-        if (activity_num == 1){
-            result = db.update(Table_Grade1, cv, ID+"=?", new String[]{row_id});
-        }
-        else if(activity_num == 2){
-            result = db.update(Table_Grade2, cv, ID+"=?", new String[]{row_id});
-        }
-        else if(activity_num == 3){
-            result = db.update(Table_Grade3, cv, ID+"=?", new String[]{row_id});
-        }
+        if (activity_num == 1){ result = db.update(Table_Grade1, cv, ID+"=?", new String[]{row_id}); }
+        else if(activity_num == 2){ result = db.update(Table_Grade2, cv, ID+"=?", new String[]{row_id}); }
+        else if(activity_num == 3){ result = db.update(Table_Grade3, cv, ID+"=?", new String[]{row_id}); }
         else if(activity_num == 4){
+            cv.put(col_private_price,Integer.parseInt(price));
+            cv.put(col_private_year,Integer.parseInt(year));
             result = db.update(Table_GradeP, cv, ID+"=?", new String[]{row_id});
         }
-
-
 
         if(result == -1){ Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show(); }
         else { Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show(); }
 
+    }
+/*
+    void add_student(int activity_num  , String student_name , String student_phone , String student_country) {
+        add_student(activity_num,student_name,student_phone,student_country,
+                0,0,0,0,0,0,0
+        ,0,0,0,0,0,0,0);
+    }
+*/
+
+
+     public int count(int activity_num) {
+        int student_count = 0; String sql = "";
+
+        if (activity_num == 1) { sql = "SELECT COUNT(*) FROM " + Table_Grade1;}
+        else if (activity_num == 2){ sql = "SELECT COUNT(*) FROM " + Table_Grade2; }
+        else if (activity_num == 3){ sql = "SELECT COUNT(*) FROM " + Table_Grade3; }
+        else if (activity_num == 4){ sql = "SELECT SUM(col_private_price) FROM " + Table_GradeP; }
+
+        Cursor cursor = getReadableDatabase().rawQuery(sql, null);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            student_count = cursor.getInt(0);
+        }
+
+        cursor.close();
+        return student_count;
+    }
+
+    Cursor readalldata(int activity_num , String filter){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+
+        if (filter.equals("All")){
+            if (db !=null ){
+                if (activity_num ==1)     {cursor = db.rawQuery("SELECT * FROM "+Table_Grade1,null);}
+                else if (activity_num ==2){cursor = db.rawQuery("SELECT * FROM "+Table_Grade2,null);}
+                else if (activity_num ==3){cursor = db.rawQuery("SELECT * FROM "+Table_Grade3,null);}
+                else if (activity_num ==4){cursor = db.rawQuery("SELECT * FROM "+Table_GradeP,null);}
+            }
+        }
+        else {
+            if (db !=null ){
+                if (activity_num ==1)     {cursor = db.rawQuery("SELECT * FROM "+Table_Grade1+" WHERE "+col_COUNRTY+" = '"+filter+"'",null);}
+                else if (activity_num ==2){cursor = db.rawQuery("SELECT * FROM "+Table_Grade2+" WHERE "+col_COUNRTY+" = '"+filter+"'",null);}
+                else if (activity_num ==3){cursor = db.rawQuery("SELECT * FROM "+Table_Grade3+" WHERE "+col_COUNRTY+" = '"+filter+"'",null);}
+                else if (activity_num ==4){cursor = db.rawQuery("SELECT * FROM "+Table_GradeP+" WHERE "+col_private_year+" = '"+filter+"'",null);}
+            }
+        }
+
+        return cursor;
     }
 
     void deleteOneRow(String row_id , int activity_num){
@@ -293,6 +297,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    void test()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        onCreate(db);
+    }
     void deleteAllData(int activity_num ){
         SQLiteDatabase db = this.getWritableDatabase();
         if (activity_num ==1)     {db.execSQL("Drop TABLE IF EXISTS "+Table_Grade1);}
@@ -907,6 +916,4 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         return  country;
     }
-
-
 }

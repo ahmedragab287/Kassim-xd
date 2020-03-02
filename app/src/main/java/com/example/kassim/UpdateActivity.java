@@ -19,21 +19,33 @@ public class UpdateActivity extends AppCompatActivity {
 
     private String id, student_name;
     private DatabaseHelper db = new DatabaseHelper(UpdateActivity.this);
-    private EditText et_student_name , et_student_phone;
+    private EditText et_student_name , et_student_phone , et_student_private_price_update;
     private CheckBox cb_aug , cb_sep , cb_oct , cb_nov , cb_dec , cb_jan , cb_feb , cb_mar , cb_apr ,
              cb_may , cb_note1 , cb_note2 , cb_rev1 , cb_rev2 ;
     private SharedPreferences preferences;
     private String activity_num ;
-    Spinner spinner_student_country;
+    Spinner spinner_student_country_update , spinner_student_private_year_update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
+        et_student_private_price_update = findViewById(R.id.et_student_private_price_update);
+        spinner_student_private_year_update = findViewById(R.id.et_student_private_year_update);
 
         preferences = getSharedPreferences("activity_num",MODE_PRIVATE);
         activity_num = preferences.getString("activity_num_num","");
+
+        /*if (Integer.parseInt(activity_num) == 4){
+            et_student_private_price_update.setVisibility(View.VISIBLE);
+            spinner_student_private_year_update.setVisibility(View.VISIBLE);
+            set_spinner();
+        } else {
+            et_student_private_price_update.setVisibility(View.GONE);
+            spinner_student_private_year_update.setVisibility(View.GONE);
+        }*/
+        set_spinner();
 
         et_student_name =findViewById(R.id.et_student_name_update);
         et_student_phone =findViewById(R.id.et_student_phone_update);
@@ -51,7 +63,7 @@ public class UpdateActivity extends AppCompatActivity {
         cb_note2 =findViewById(R.id.cb_note2_update);
         cb_rev1 =findViewById(R.id.cb_rev1_update);
         cb_rev2 =findViewById(R.id.cb_rev2_update);
-        spinner_student_country = findViewById(R.id.et_student_country_update);
+        spinner_student_country_update = findViewById(R.id.et_student_country_update);
         student_name = getIntent().getStringExtra("student_name");
         id = getIntent().getStringExtra("id");
 
@@ -61,14 +73,19 @@ public class UpdateActivity extends AppCompatActivity {
         getAndSetIntentData();
         btn_update();
         btn_delete();
-        set_spinner();
+
     }
 
     private void set_spinner() {
         String[] country = { "Badaway" , "Biddin" , "Salamon" , "Sobra bidin" , "Mansoura"};
+        String[] year = {"1" , "2" , "3"};
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, country);
         aa.setDropDownViewResource(android.R.layout.simple_list_item_1);
-        spinner_student_country.setAdapter(aa);
+        spinner_student_country_update.setAdapter(aa);
+
+        ArrayAdapter a2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, year);
+        a2.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        spinner_student_private_year_update.setAdapter(a2);
     }
 
     void btn_update(){
@@ -77,12 +94,13 @@ public class UpdateActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 id = getIntent().getStringExtra("id");
-
+                String private_price_update =et_student_private_price_update.getText().toString().trim();
+                String private_year_update =spinner_student_private_year_update.getSelectedItem().toString().trim();
 
                 db.updateData( Integer.parseInt(activity_num), id,
                         et_student_name.getText().toString(),
                         et_student_phone.getText().toString(),
-                        spinner_student_country.getSelectedItem().toString().trim(),
+                        spinner_student_country_update.getSelectedItem().toString().trim(),
                         cb_aug.isChecked()?1:0,
                         cb_sep.isChecked()?1:0,
                         cb_oct.isChecked()?1:0,
@@ -96,12 +114,13 @@ public class UpdateActivity extends AppCompatActivity {
                         cb_note1.isChecked()?1:0,
                         cb_note2.isChecked()?1:0,
                         cb_rev1.isChecked()?1:0,
-                        cb_rev2.isChecked()?1:0);
-
+                        cb_rev2.isChecked()?1:0,
+                        Integer.parseInt(activity_num) == 4?private_price_update.equals("")?"0":private_price_update:"",
+                        Integer.parseInt(activity_num) == 4?private_year_update.equals("")?"1":private_price_update:""
+                        );
 
             }
         });
-
 
     }
 

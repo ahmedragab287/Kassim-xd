@@ -18,26 +18,45 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class add_student extends AppCompatActivity {
 
-    Spinner et_student_country;
-    CheckBox cb_aug , cb_sep , cb_oct , cb_nov , cb_dec ,
+    private Spinner et_student_country , et_student_private_year;
+    private CheckBox cb_aug , cb_sep , cb_oct , cb_nov , cb_dec ,
              cb_jan , cb_feb , cb_mar , cb_apr , cb_may ,
              cb_note1 , cb_note2 , cb_rev1 , cb_rev2;
     int activity_num ;
+    EditText et_student_private_price ;
 
-    String[] country = { "Badaway" , "Biddin" , "Salamon" , "Sobra bidin" , "Mansoura"};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
+        et_student_private_price =findViewById(R.id.et_student_private_price);
+        et_student_private_year =findViewById(R.id.et_student_private_year);
+
         btn_back();     btn_save();
         activity_num = getIntent().getIntExtra("activity_num", 1);
-
+        if (activity_num == 4){
+            et_student_private_price.setVisibility(View.VISIBLE);
+            et_student_private_year.setVisibility(View.VISIBLE);
+            set_spinner();
+        } else {
+            et_student_private_price.setVisibility(View.GONE);
+            et_student_private_year.setVisibility(View.GONE);
+        }
+        String[] country = { "Badaway" , "Biddin" , "Salamon" , "Sobra bidin" , "Mansoura"};
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, country);
         aa.setDropDownViewResource(android.R.layout.simple_list_item_1);
         et_student_country.setAdapter(aa);
     }
 
+    private void set_spinner(){
+        String [] year = { "1" , "2", "3" };
+        ArrayAdapter a2 = new ArrayAdapter(this, android.R.layout.simple_spinner_item, year);
+        a2.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        et_student_private_year.setAdapter(a2);
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -123,6 +142,8 @@ public class add_student extends AppCompatActivity {
             public void onClick(View v) {
                 DatabaseHelper db = new DatabaseHelper(add_student.this);
                 if (!et_student_name.getText().toString().isEmpty()) {
+                    String private_price =et_student_private_price.getText().toString().trim();
+                    String private_year =et_student_private_year.getSelectedItem().toString().trim();
 
                     db.add_student(activity_num,
                             et_student_name.getText().toString().trim(),
@@ -141,7 +162,9 @@ public class add_student extends AppCompatActivity {
                             cb_note1.isChecked()?1:0,
                             cb_note2.isChecked()?1:0,
                             cb_rev1.isChecked()?1:0,
-                            cb_rev2.isChecked()?1:0);
+                            cb_rev2.isChecked()?1:0,
+                            activity_num == 4?private_price.equals("")?"0":private_price:"",
+                            activity_num == 4?private_year.equals("")?"1":private_year:"");
 
                     if (activity_num ==1)
                     {

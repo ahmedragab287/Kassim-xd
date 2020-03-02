@@ -20,9 +20,9 @@
 
         <Button
             android:id="@+id/btn_back"
-            android:layout_width="25dp"
+            android:layout_width="35dp"
             android:layout_height="35dp"
-            android:background="@drawable/btn_back" />
+            android:background="@drawable/ico_back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -94,6 +94,40 @@
         app:layout_constraintStart_toStartOf="@id/et_student_phone"
         app:layout_constraintTop_toBottomOf="@id/et_student_phone" />
 
+    <EditText
+        android:id="@+id/et_student_private_price"
+        android:layout_width="160dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/student_name"
+        android:fontFamily="@font/arbfonts_abdo_master_medium"
+        android:hint="Price"
+        android:inputType="number"
+        android:paddingLeft="25dp"
+        android:paddingTop="5dp"
+        android:paddingRight="25dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="@+id/et_student_country"
+        app:layout_constraintTop_toBottomOf="@+id/et_student_country"
+        tools:visibility="gone" />
+
+    <Spinner
+        android:id="@+id/et_student_private_year"
+        android:layout_width="190dp"
+        android:layout_height="45dp"
+        android:background="@drawable/student_country"
+        android:fontFamily="@font/arbfonts_abdo_master_medium"
+        android:inputType="text"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/et_student_private_price"
+        app:layout_constraintStart_toEndOf="@+id/et_student_private_price"
+        tools:visibility="gone" />
+
     <TableLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -101,11 +135,12 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/et_student_country">
+        app:layout_constraintTop_toBottomOf="@id/et_student_private_price">
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
             <CheckBox
                 android:id="@+id/cb_aug"
@@ -128,16 +163,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:buttonTint="@color/colorWhite"
-                    android:fontFamily="@font/arbfonts_hacen_samra_it"
+                android:fontFamily="@font/arbfonts_hacen_samra_it"
                 android:layoutDirection="rtl"
                 android:text="JAN"
                 android:textColor="@color/colorWhite"
                 android:textSize="21sp" />
 
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
             <CheckBox
                 android:id="@+id/cb_sep"
@@ -167,9 +204,11 @@
                 android:textSize="21sp" />
 
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
             <CheckBox
                 android:id="@+id/cb_oct"
@@ -199,9 +238,11 @@
                 android:textSize="21sp" />
 
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
             <CheckBox
                 android:id="@+id/cb_nov"
@@ -231,9 +272,11 @@
                 android:textSize="21sp" />
 
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
             <CheckBox
                 android:id="@+id/cb_dec"
@@ -263,9 +306,11 @@
                 android:textSize="21sp" />
 
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
             <CheckBox
                 android:id="@+id/cb_note1"
@@ -295,9 +340,11 @@
                 android:textSize="21sp" />
 
         </TableRow>
+
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp">
 
             <CheckBox
                 android:id="@+id/cb_rev1"
@@ -329,6 +376,7 @@
         </TableRow>
 
     </TableLayout>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_save"

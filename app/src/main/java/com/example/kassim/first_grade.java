@@ -17,26 +17,24 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 
 public class first_grade extends AppCompatActivity  {
 
-    int activity_num;
-    FloatingActionButton main_float ,add_student, delete_all;
-    float translatonY =600f;
-    OvershootInterpolator interpolator = new OvershootInterpolator();
-    Boolean ismenuopen = false;
+    private int activity_num;
+    private FloatingActionButton main_float ,add_student, delete_all;
+    private float translatonY =600f;
+    private OvershootInterpolator interpolator = new OvershootInterpolator();
+    private Boolean ismenuopen = false;
 
-    DatabaseHelper db  ;
-    ImageView empty_imageview;
-    TextView no_data , grade_name;
-    ArrayList<String> ID, student_name;
-    RecyclerView recyclerView;
-    CustomAdapter customAdapter;
-    Spinner spin_area;
+    private DatabaseHelper db  ;
+    private TextView  grade_name ,txt_count_student;
+    private ArrayList<String> ID, student_name , student_year;
+    private RecyclerView recyclerView;
+    private CustomAdapter customAdapter;
+    private Spinner filter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +46,7 @@ public class first_grade extends AppCompatActivity  {
 
         recyclerView = findViewById(R.id.recyclerView);
 
+        txt_count_student = findViewById(R.id.txt_count_student);
         grade_name =findViewById(R.id.grade_name);
         activity_num = getIntent().getIntExtra("activity_num", 1);
         if (activity_num ==1){grade_name.setText("First Grade");}
@@ -62,11 +61,10 @@ public class first_grade extends AppCompatActivity  {
         db = new DatabaseHelper(first_grade.this);
         ID = new ArrayList<>();
         student_name = new ArrayList<>();
+        student_year = new ArrayList<>();
 
-        spin_area_change();
-
+        setFilter();
     }
-
 
 
     @Override
@@ -77,29 +75,30 @@ public class first_grade extends AppCompatActivity  {
         finish();
     }
 
-    private void spin_area_change() {
-        spin_area = findViewById(R.id.spin_area);
+    private void setFilter() {
+        filter = findViewById(R.id.spin_area);
         String[] country = { "All","Badaway" , "Biddin" , "Salamon" , "Sobra bidin" , "Mansoura"};
+        String[] year = {"All","1" , "2" , "3"};
         ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, country);
-        aa.setDropDownViewResource(android.R.layout.simple_list_item_1);
-        spin_area.setAdapter(aa);
 
-        spin_area.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        if (activity_num == 4){
+           aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, year);
+       }
+        aa.setDropDownViewResource(android.R.layout.simple_list_item_1);
+        filter.setAdapter(aa);
+
+        filter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                ID.clear(); student_name.clear();
-                customAdapter = new CustomAdapter(first_grade.this,ID,student_name);
+                ID.clear(); student_name.clear(); student_year.clear();
+                customAdapter = new CustomAdapter(first_grade.this,ID,student_name,student_year);
                 recyclerView.setAdapter(customAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(first_grade.this));
-                storeDataInArray(activity_num,spin_area.getSelectedItem().toString());
+                storeDataInArray(activity_num,filter.getSelectedItem().toString());
                 if (recyclerView.getAdapter() != null) {
                     int count = recyclerView.getAdapter().getItemCount();
-                    TextView txt_count_studernt = findViewById(R.id.txt_count_studernt);
-                    txt_count_studernt.setText(String.valueOf(count));
+                    txt_count_student.setText(String.valueOf(count));
                 }
-
-
             }
 
             @Override
@@ -110,25 +109,37 @@ public class first_grade extends AppCompatActivity  {
 
     }
 
-    void storeDataInArray(int activity_num , String area){
-        empty_imageview = findViewById(R.id.empty_imageview);
-        no_data = findViewById(R.id.no_data);
+    private void storeDataInArray(int activity_num , String filter_string){
+        ImageView empty_image_view = findViewById(R.id.empty_imageview);
+        TextView no_data = findViewById(R.id.no_data);
 
-        Cursor cursor = db.readalldata(activity_num , area);
+        Cursor cursor = db.readalldata(activity_num , filter_string);
         if(cursor.getCount()==0){
-            empty_imageview.setVisibility(View.VISIBLE);
+            empty_image_view.setVisibility(View.VISIBLE);
             no_data.setVisibility(View.VISIBLE);
-            if (db.count(activity_num) == 0){ spin_area.setVisibility(View.GONE);}
-            else { spin_area.setVisibility(View.VISIBLE);}
+            if (db.count(activity_num) == 0)
+            {
+                filter.setVisibility(View.GONE);
+                txt_count_student.setVisibility(View.GONE);
+            }
+            else {
+                filter.setVisibility(View.VISIBLE);
+                txt_count_student.setVisibility(View.VISIBLE);
+            }
 
         }else {
             while (cursor.moveToNext()){
                 ID.add(cursor.getString(0));
                 student_name.add(cursor.getString(1));
+
+                if (activity_num == 4) { student_year.add(cursor.getString(18)); }
+                else {//student_year.add("");
+                }
             }
-            empty_imageview.setVisibility(View.GONE);
+            empty_image_view.setVisibility(View.GONE);
             no_data.setVisibility(View.GONE);
-            spin_area.setVisibility(View.VISIBLE);
+            filter.setVisibility(View.VISIBLE);
+            txt_count_student.setVisibility(View.VISIBLE);
         }
     }
 
@@ -148,7 +159,7 @@ public class first_grade extends AppCompatActivity  {
         delete_all.animate().alpha(0f).translationY(translatonY).setInterpolator(interpolator).setDuration(300).start();
     }
 
-    public void btn_main_float(){
+    private void btn_main_float(){
         main_float = findViewById(R.id.btn_more);
         main_float.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,7 +175,7 @@ public class first_grade extends AppCompatActivity  {
         });
     }
 
-    public void btn_add(){
+    private void btn_add(){
         add_student = findViewById(R.id.btn_add);
         add_student.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,7 +188,7 @@ public class first_grade extends AppCompatActivity  {
         });
     }
 
-    public void btn_delete_all(){
+    private void btn_delete_all(){
         delete_all = findViewById(R.id.btn_delete_all);
         delete_all.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,7 +206,7 @@ public class first_grade extends AppCompatActivity  {
         }
     }
 
-    void confirmDialog(){
+    private void confirmDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Delete All?");
         builder.setMessage("Are you sure you want to delete all Students?");
@@ -206,7 +217,7 @@ public class first_grade extends AppCompatActivity  {
                 myDB.deleteAllData(activity_num);
                 //Refresh Activity
                 ID.clear(); student_name.clear();
-                customAdapter = new CustomAdapter(first_grade.this,ID,student_name);
+                customAdapter = new CustomAdapter(first_grade.this,ID,student_name,ID);
                 recyclerView.setAdapter(customAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(first_grade.this));
                 storeDataInArray(activity_num,"All");
@@ -222,7 +233,7 @@ public class first_grade extends AppCompatActivity  {
         builder.create().show();
     }
 
-    public void btn_back() {
+    private  void btn_back() {
         Button btn_back = findViewById(R.id.btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override

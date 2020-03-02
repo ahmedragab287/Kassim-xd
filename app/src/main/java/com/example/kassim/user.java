@@ -1,11 +1,9 @@
 package com.example.kassim;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -78,7 +76,6 @@ public class user extends AppCompatActivity {
         TextView gradeOne_count = findViewById(R.id.gradeOne_count);
         TextView gradeTwo_count = findViewById(R.id.gradetwo_count);
         TextView gradeThere_count = findViewById(R.id.gradethere_count);
-        TextView gradePrivate_count = findViewById(R.id.gradeprivate_count);
 
 
         int count_gradeone = db.count(1);
@@ -86,50 +83,44 @@ public class user extends AppCompatActivity {
         int count_gradethere = db.count(3);
         int count_gradeprivat = db.count(4);
 
+        TextView gradeprivate_total = findViewById(R.id.gradeprivate_total);
+        gradeprivate_total.setText(String.valueOf(count_gradeprivat));
 
         gradeOne_count.setText(String.valueOf(count_gradeone));
         gradeTwo_count.setText(String.valueOf(count_gradetwo));
         gradeThere_count.setText(String.valueOf(count_gradethere));
-        gradePrivate_count.setText(String.valueOf(count_gradeprivat));
 
         /////////////////////////////////////
         TextView gradeOne_rate = findViewById(R.id.gradeOne_rate);
         TextView gradeTwo_rate = findViewById(R.id.gradetwo_rate);
         TextView gradeThere_rate = findViewById(R.id.gradethere_rate);
-        TextView gradePrivate_rate = findViewById(R.id.gradeprivate_rate);
 
         SharedPreferences preferences = getSharedPreferences("price",MODE_PRIVATE);
         int gradeOne_rate_int = Integer.valueOf(preferences.getString("price_grade_one","0"));
         int gradeTwo_rate_int = Integer.valueOf(preferences.getString("price_grade_two","0"));
         int gradeThere_rate_int = Integer.valueOf(preferences.getString("price_grade_there","0"));
-        int gradePrivate_rate_int = 100;
 
         gradeOne_rate.setText(String.valueOf(gradeOne_rate_int));
         gradeTwo_rate.setText(String.valueOf(gradeTwo_rate_int));
         gradeThere_rate.setText(String.valueOf(gradeThere_rate_int));
-        gradePrivate_rate.setText(String.valueOf(gradePrivate_rate_int));
 
 
         /////////////////////////////////////
         TextView gradeOne_total = findViewById(R.id.gradeOne_total);
         TextView gradeTwo_total = findViewById(R.id.gradetwo_total);
         TextView gradeThere_total = findViewById(R.id.gradethere_total);
-        TextView gradePrivate_total = findViewById(R.id.gradeprivate_total);
 
 
         gradeOne_total.setText(String.valueOf(gradeOne_rate_int * count_gradeone));
         gradeTwo_total.setText(String.valueOf(gradeTwo_rate_int * count_gradetwo));
         gradeThere_total.setText(String.valueOf(gradeThere_rate_int * count_gradethere));
-        gradePrivate_total.setText(String.valueOf(gradePrivate_rate_int * count_gradeprivat));
 
         /////////////////////////////////////
         TextView total_salary = findViewById(R.id.total_salary);
         total_salary.setText(String.valueOf((gradeOne_rate_int * count_gradeone) +
                                     (gradeTwo_rate_int * count_gradetwo)+
                                     (gradeThere_rate_int * count_gradethere)+
-                                    (gradePrivate_rate_int * count_gradeprivat)));
-
-
+                                    count_gradeprivat));
     }
 
     private void btn_first_grade() {
@@ -210,5 +201,4 @@ public class user extends AppCompatActivity {
             }
         });
     }
-
 }

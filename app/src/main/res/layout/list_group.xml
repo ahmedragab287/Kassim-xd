@@ -44,5 +44,18 @@
             app:layout_constraintEnd_toEndOf="@+id/item_name"
             app:layout_constraintTop_toTopOf="@+id/item_name" />
 
+        <TextView
+            android:id="@+id/student_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:fontFamily="@font/arbfonts_hacen_samra"
+            android:paddingTop="7dp"
+            android:text=""
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/item_name" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
