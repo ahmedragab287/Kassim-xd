@@ -297,18 +297,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    void test()
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-        onCreate(db);
-    }
     void deleteAllData(int activity_num ){
         SQLiteDatabase db = this.getWritableDatabase();
         if (activity_num ==1)     {db.execSQL("Drop TABLE IF EXISTS "+Table_Grade1);}
         else if (activity_num ==2){db.execSQL("Drop TABLE IF EXISTS "+Table_Grade2);}
         else if (activity_num ==3){db.execSQL("Drop TABLE IF EXISTS "+Table_Grade3);}
         else if (activity_num ==4){db.execSQL("Drop TABLE IF EXISTS "+Table_GradeP);}
-
         onCreate(db);
     }
 
@@ -328,7 +322,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 csr.close();
             }
-            if (month.equals("sep")){
+            else if (month.equals("sep")){
                 query = "SELECT "+ col_sep +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
 
                 Cursor csr = db.rawQuery(query,null);
@@ -337,7 +331,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 csr.close();
             }
-            if (month.equals("oct")){
+            else if (month.equals("oct")){
                 query = "SELECT "+ col_oct +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
 
                 Cursor csr = db.rawQuery(query,null);
@@ -346,7 +340,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 csr.close();
             }
-            if (month.equals("nov")){
+            else if (month.equals("nov")){
                 query = "SELECT "+ col_nov +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
 
                 Cursor csr = db.rawQuery(query,null);
@@ -355,7 +349,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 csr.close();
             }
-            if (month.equals("dec")){
+            else if (month.equals("dec")){
                 query = "SELECT "+ col_dec +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
 
                 Cursor csr = db.rawQuery(query,null);
@@ -364,7 +358,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 csr.close();
             }
-            if (month.equals("note1")){
+            else if (month.equals("note1")){
                 query = "SELECT "+ col_note1 +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
 
                 Cursor csr = db.rawQuery(query,null);
@@ -373,7 +367,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 csr.close();
             }
-            if (month.equals("rev1")){
+            else if (month.equals("rev1")){
                 query = "SELECT "+ col_rev1 +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
 
                 Cursor csr = db.rawQuery(query,null);
@@ -382,7 +376,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 csr.close();
             }
-            if (month.equals("jan")){
+            else if (month.equals("jan")){
                 query = "SELECT "+ col_jan +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
 
                 Cursor csr = db.rawQuery(query,null);
@@ -391,7 +385,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 csr.close();
             }
-            if (month.equals("feb")){
+            else if (month.equals("feb")){
                 query = "SELECT "+ col_feb +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
 
                 Cursor csr = db.rawQuery(query,null);
@@ -400,7 +394,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 csr.close();
             }
-            if (month.equals("mar")){
+            else if (month.equals("mar")){
                 query = "SELECT "+ col_mar +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
 
                 Cursor csr = db.rawQuery(query,null);
@@ -409,7 +403,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 csr.close();
             }
-            if (month.equals("apr")){
+            else if (month.equals("apr")){
                 query = "SELECT "+ col_apr +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
 
                 Cursor csr = db.rawQuery(query,null);
@@ -418,7 +412,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 csr.close();
             }
-            if (month.equals("may")){
+            else if (month.equals("may")){
                 query = "SELECT "+ col_may +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
 
                 Cursor csr = db.rawQuery(query,null);
@@ -427,7 +421,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 csr.close();
             }
-            if (month.equals("note2")){
+            else if (month.equals("note2")){
                 query = "SELECT "+ col_note2 +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
 
                 Cursor csr = db.rawQuery(query,null);
@@ -436,7 +430,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 }
                 csr.close();
             }
-            if (month.equals("rev2")){
+            else if (month.equals("rev2")){
                 query = "SELECT "+ col_rev2 +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
 
                 Cursor csr = db.rawQuery(query,null);
@@ -874,6 +868,47 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
 
         return  phone;
+    }
+
+    String get_student_private_price(int activity_num , int id ){
+
+        String price = "";
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        if (activity_num == 1){
+            String query = "SELECT "+ col_private_price +" FROM " + Table_Grade1 +" WHERE "+ID + "='"+id+"'";
+            Cursor csr = db.rawQuery(query,null);
+            if (csr.moveToFirst()) {
+                price = csr.getString(csr.getColumnIndex(col_private_price));
+            }
+            csr.close();
+        }
+        else if(activity_num == 2){
+            String query = "SELECT "+ col_private_price +" FROM " + Table_Grade2 +" WHERE "+ID + "='"+id+"'";
+            Cursor csr = db.rawQuery(query,null);
+            if (csr.moveToFirst()) {
+                price = csr.getString(csr.getColumnIndex(col_private_price));
+            }
+            csr.close();
+        }
+        else if (activity_num == 3){
+            String query = "SELECT "+ col_private_price +" FROM " + Table_Grade3 +" WHERE "+ID + "='"+id+"'";
+            Cursor csr = db.rawQuery(query,null);
+            if (csr.moveToFirst()) {
+                price = csr.getString(csr.getColumnIndex(col_private_price));
+            }
+            csr.close();
+        }
+        else if (activity_num ==4){
+            String query = "SELECT "+ col_private_price +" FROM " + Table_GradeP +" WHERE "+ID + "='"+id+"'";
+            Cursor csr = db.rawQuery(query,null);
+            if (csr.moveToFirst()) {
+                price = csr.getString(csr.getColumnIndex(col_private_price));
+            }
+            csr.close();
+        }
+
+        return  price;
     }
 
     String get_student_country(int activity_num , int id ){

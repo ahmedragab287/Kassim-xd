@@ -30,6 +30,15 @@ public class loginscreen extends AppCompatActivity {
         cb_oncheck();
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(loginscreen.this,MainActivity.class));
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+
+
+    }
+
     private void cb_oncheck() {
         CheckBox checkBox = findViewById(R.id.cb_remeber);
 
@@ -67,6 +76,7 @@ public class loginscreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(loginscreen.this,MainActivity.class));
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
             }
         });
     }

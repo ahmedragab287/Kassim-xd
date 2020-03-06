@@ -22,10 +22,8 @@ public class add_student extends AppCompatActivity {
     private CheckBox cb_aug , cb_sep , cb_oct , cb_nov , cb_dec ,
              cb_jan , cb_feb , cb_mar , cb_apr , cb_may ,
              cb_note1 , cb_note2 , cb_rev1 , cb_rev2;
-    int activity_num ;
-    EditText et_student_private_price ;
-
-
+    private int activity_num ;
+    private EditText et_student_private_price ;
 
 
     @Override
@@ -37,6 +35,7 @@ public class add_student extends AppCompatActivity {
 
         btn_back();     btn_save();
         activity_num = getIntent().getIntExtra("activity_num", 1);
+
         if (activity_num == 4){
             et_student_private_price.setVisibility(View.VISIBLE);
             et_student_private_year.setVisibility(View.VISIBLE);
@@ -142,8 +141,11 @@ public class add_student extends AppCompatActivity {
             public void onClick(View v) {
                 DatabaseHelper db = new DatabaseHelper(add_student.this);
                 if (!et_student_name.getText().toString().isEmpty()) {
-                    String private_price =et_student_private_price.getText().toString().trim();
-                    String private_year =et_student_private_year.getSelectedItem().toString().trim();
+                    String private_price ="" , private_year ="";
+                    if (activity_num == 4){
+                        private_price =et_student_private_price.getText().toString().trim();
+                        private_year =et_student_private_year.getSelectedItem().toString().trim();
+                    }
 
                     db.add_student(activity_num,
                             et_student_name.getText().toString().trim(),
@@ -171,24 +173,26 @@ public class add_student extends AppCompatActivity {
                         Intent i = new Intent(add_student.this,first_grade.class);
                         i.putExtra("activity_num", 1);
                         startActivity(i);
+                        finish();
                     }
                     else if (activity_num ==2){
                         Intent i = new Intent(add_student.this,first_grade.class);
                         i.putExtra("activity_num", 2);
                         startActivity(i);
+                        finish();
                     }
                     else if (activity_num ==3){
                         Intent i = new Intent(add_student.this,first_grade.class);
                         i.putExtra("activity_num", 3);
                         startActivity(i);
+                        finish();
                     }
                     else if (activity_num ==4){
                         Intent i = new Intent(add_student.this,first_grade.class);
                         i.putExtra("activity_num", 4);
                         startActivity(i);
+                        finish();
                     }
-                    finish();
-
 
                 } else {
                     FancyToast.makeText(add_student.this,"Student can't be Empty !",FancyToast.LENGTH_LONG,FancyToast.ERROR,false).show();

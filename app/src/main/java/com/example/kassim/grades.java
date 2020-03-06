@@ -29,6 +29,12 @@ public class grades extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finishAffinity();
+    }
+
     private void btn_logout() {
         Button logout;
         logout = findViewById(R.id.btn_logout);

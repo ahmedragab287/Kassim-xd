@@ -82,50 +82,22 @@
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_more"
+        android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
         android:layout_marginBottom="28dp"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:borderWidth="0dp"
-        app:elevation="10dp"
-        android:backgroundTint="@color/colorBabyBlue"
-        android:src="@drawable/ic_keyboard_arrow_up"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="100dp"
-        app:fabSize="mini"
-        android:clickable="true"
-        android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:borderWidth="0dp"
         app:elevation="10dp"
         android:backgroundTint="@color/colorBabyBlue"
         android:src="@drawable/ic_add"/>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/btn_delete_all"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginBottom="150dp"
-        app:fabSize="mini"
-        android:clickable="true"
-        android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:borderWidth="0dp"
-        app:elevation="10dp"
-        android:src="@drawable/ic_delete_forever"/>
+
+
 
 
     <ImageView

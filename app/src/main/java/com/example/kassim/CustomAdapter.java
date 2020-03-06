@@ -51,7 +51,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 i.putExtra("id",String.valueOf(ID.get(position)));
                 i.putExtra("student_name",String.valueOf(student_name.get(position)));
                 i.putExtra("activity_num", 1);
-
                 context.startActivity(i);
 
             }

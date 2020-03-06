@@ -24,11 +24,12 @@ public class UpdateActivity extends AppCompatActivity {
              cb_may , cb_note1 , cb_note2 , cb_rev1 , cb_rev2 ;
     private SharedPreferences preferences;
     private String activity_num ;
-    Spinner spinner_student_country_update , spinner_student_private_year_update;
+    private Spinner spinner_student_country_update , spinner_student_private_year_update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_update);
         overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left);
         et_student_private_price_update = findViewById(R.id.et_student_private_price_update);
@@ -37,15 +38,6 @@ public class UpdateActivity extends AppCompatActivity {
         preferences = getSharedPreferences("activity_num",MODE_PRIVATE);
         activity_num = preferences.getString("activity_num_num","");
 
-        /*if (Integer.parseInt(activity_num) == 4){
-            et_student_private_price_update.setVisibility(View.VISIBLE);
-            spinner_student_private_year_update.setVisibility(View.VISIBLE);
-            set_spinner();
-        } else {
-            et_student_private_price_update.setVisibility(View.GONE);
-            spinner_student_private_year_update.setVisibility(View.GONE);
-        }*/
-        set_spinner();
 
         et_student_name =findViewById(R.id.et_student_name_update);
         et_student_phone =findViewById(R.id.et_student_phone_update);
@@ -68,11 +60,19 @@ public class UpdateActivity extends AppCompatActivity {
         id = getIntent().getStringExtra("id");
 
 
+        if (Integer.parseInt(activity_num) == 4){
+            et_student_private_price_update.setVisibility(View.VISIBLE);
+            spinner_student_private_year_update.setVisibility(View.VISIBLE);
+        }
+        else {
+            et_student_private_price_update.setVisibility(View.GONE);
+            spinner_student_private_year_update.setVisibility(View.GONE);
+        }
+
 
         btn_back_update();
-        getAndSetIntentData();
-        btn_update();
-        btn_delete();
+        set_spinner();
+        getAndSetIntentData();          btn_update();         btn_delete();
 
     }
 
@@ -88,12 +88,11 @@ public class UpdateActivity extends AppCompatActivity {
         spinner_student_private_year_update.setAdapter(a2);
     }
 
-    void btn_update(){
+    private void btn_update(){
         FloatingActionButton btn_save_update =findViewById(R.id.btn_save_update);
         btn_save_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                id = getIntent().getStringExtra("id");
                 String private_price_update =et_student_private_price_update.getText().toString().trim();
                 String private_year_update =spinner_student_private_year_update.getSelectedItem().toString().trim();
 
@@ -116,7 +115,7 @@ public class UpdateActivity extends AppCompatActivity {
                         cb_rev1.isChecked()?1:0,
                         cb_rev2.isChecked()?1:0,
                         Integer.parseInt(activity_num) == 4?private_price_update.equals("")?"0":private_price_update:"",
-                        Integer.parseInt(activity_num) == 4?private_year_update.equals("")?"1":private_price_update:""
+                        Integer.parseInt(activity_num) == 4?private_year_update.equals("")?"1":private_year_update:""
                         );
 
             }
@@ -124,7 +123,7 @@ public class UpdateActivity extends AppCompatActivity {
 
     }
 
-    void btn_delete(){
+    private void btn_delete(){
         Button btn_delete = findViewById(R.id.btn_delete);
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,13 +133,16 @@ public class UpdateActivity extends AppCompatActivity {
         });
     }
 
-    void getAndSetIntentData(){
+    private void getAndSetIntentData(){
 
         Spinner et_student_country = findViewById(R.id.et_student_country_update);
-
         if(getIntent().hasExtra("student_name") &&
                 getIntent().hasExtra("id")){
 
+
+            if (Integer.parseInt(activity_num) == 4) {
+                et_student_private_price_update.setText(db.get_student_private_price(Integer.parseInt(activity_num), Integer.parseInt(id)));
+            }
 
             et_student_name.setText(student_name);
 
@@ -155,7 +157,7 @@ public class UpdateActivity extends AppCompatActivity {
         }
     }
 
-    void get_checkboxes(){
+    private void get_checkboxes(){
 
         if (db.checkbox(Integer.parseInt(activity_num) , Integer.parseInt(id) , "aug") == 1)
         { cb_aug.setChecked(true);} else {cb_aug.setChecked(false); }
@@ -181,7 +183,7 @@ public class UpdateActivity extends AppCompatActivity {
         if (db.checkbox(Integer.parseInt(activity_num) , Integer.parseInt(id) , "jan") == 1)
         { cb_jan.setChecked(true);} else {cb_jan.setChecked(false); }
 
-        if (db.checkbox(Integer.parseInt(activity_num) , Integer.parseInt(id) , "fep") == 1)
+        if (db.checkbox(Integer.parseInt(activity_num) , Integer.parseInt(id) , "feb") == 1)
         { cb_feb.setChecked(true);} else {cb_feb.setChecked(false); }
 
         if (db.checkbox(Integer.parseInt(activity_num) , Integer.parseInt(id) , "mar") == 1)
@@ -201,7 +203,7 @@ public class UpdateActivity extends AppCompatActivity {
 
     }
 
-    void confirmDialog(){
+    private void confirmDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Delete " + student_name + " ?");
         builder.setMessage("Are you sure you want to delete " + student_name + " ?");
@@ -223,7 +225,7 @@ public class UpdateActivity extends AppCompatActivity {
         builder.create().show();
     }
 
-    void btn_back_update(){
+    private void btn_back_update(){
         Button btn_back_update =findViewById(R.id.btn_back_update);
         btn_back_update.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -233,7 +235,7 @@ public class UpdateActivity extends AppCompatActivity {
         });
     }
 
-    void back(){
+    private void back(){
         SharedPreferences preferences = getSharedPreferences("activity_num",MODE_PRIVATE);
         String activity_num = preferences.getString("activity_num_num","");
 
@@ -242,24 +244,27 @@ public class UpdateActivity extends AppCompatActivity {
             Intent i = new Intent(UpdateActivity.this,first_grade.class);
             i.putExtra("activity_num", 1);
             startActivity(i);
+            finish();
         }
         else if (Integer.parseInt(activity_num) ==2){
             Intent i = new Intent(UpdateActivity.this,first_grade.class);
             i.putExtra("activity_num", 2);
             startActivity(i);
+            finish();
         }
         else if (Integer.parseInt(activity_num) ==3){
             Intent i = new Intent(UpdateActivity.this,first_grade.class);
             i.putExtra("activity_num", 3);
             startActivity(i);
+            finish();
         }
         else if (Integer.parseInt(activity_num) ==4){
             Intent i = new Intent(UpdateActivity.this,first_grade.class);
             i.putExtra("activity_num", 4);
             startActivity(i);
+            finish();
         }
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-        finish();
     }
 
     @Override
@@ -271,23 +276,26 @@ public class UpdateActivity extends AppCompatActivity {
             Intent i = new Intent(UpdateActivity.this,first_grade.class);
             i.putExtra("activity_num", 1);
             startActivity(i);
+            finish();
         }
         else if (Integer.parseInt(activity_num) ==2){
             Intent i = new Intent(UpdateActivity.this,first_grade.class);
             i.putExtra("activity_num", 2);
             startActivity(i);
+            finish();
         }
         else if (Integer.parseInt(activity_num) ==3){
             Intent i = new Intent(UpdateActivity.this,first_grade.class);
             i.putExtra("activity_num", 3);
             startActivity(i);
+            finish();
         }
         else if (Integer.parseInt(activity_num) ==4){
             Intent i = new Intent(UpdateActivity.this,first_grade.class);
             i.putExtra("activity_num", 4);
             startActivity(i);
+            finish();
         }
         overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
-        finish();
     }
 }

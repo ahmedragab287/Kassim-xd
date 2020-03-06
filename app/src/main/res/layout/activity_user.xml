@@ -438,7 +438,8 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="20dp"
                     android:layout_marginEnd="23dp"
-                    android:background="@drawable/ic_edit" />
+                    android:background="@drawable/ic_edit"
+                    android:visibility="invisible" />
 
                 <Button
                     android:id="@+id/circul_private"
@@ -541,7 +542,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="190dp"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="10dp"
                     android:fontFamily="@font/hotrgb"
                     android:text="0000"
                     android:textAlignment="center"

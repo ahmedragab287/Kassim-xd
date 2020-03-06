@@ -52,14 +52,6 @@ public class user extends AppCompatActivity {
                 to_setting();
             }
         });
-
-        Button pen_gradeprivate = findViewById(R.id.pen_gradeprivate);
-        pen_gradeprivate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                to_setting();
-            }
-        });
     }
 
     private void to_setting() {

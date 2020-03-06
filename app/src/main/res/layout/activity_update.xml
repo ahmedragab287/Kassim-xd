@@ -119,10 +119,8 @@
         android:paddingRight="25dp"
         android:textColor="@color/colorBlack"
         android:textSize="18sp"
-        android:visibility="visible"
         app:layout_constraintStart_toStartOf="@+id/et_student_country_update"
-        app:layout_constraintTop_toBottomOf="@+id/et_student_country_update"
-        tools:visibility="visible" />
+        app:layout_constraintTop_toBottomOf="@+id/et_student_country_update"/>
 
     <Spinner
         android:id="@+id/et_student_private_year_update"
@@ -136,8 +134,7 @@
         android:textColor="@color/colorBlack"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/et_student_private_price_update"
-        app:layout_constraintStart_toEndOf="@+id/et_student_private_price_update"
-        tools:visibility="visible" />
+        app:layout_constraintStart_toEndOf="@+id/et_student_private_price_update"/>
 
     <TableLayout
         android:layout_width="wrap_content"

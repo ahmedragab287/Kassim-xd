@@ -1,7 +1,10 @@
 package com.example.kassim;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -30,6 +33,77 @@ public class setting extends AppCompatActivity {
         btn_back();
         btn_save_price();
         btn_save_user();
+
+        btn_delete_grade_one();
+        btn_delete_grade_two();
+        btn_delete_grade_there();
+        btn_delete_grade_private();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        back();
+    }
+
+    private void btn_delete_grade_one() {
+        Button btn_delete_grade_one = findViewById(R.id.delete_grade_one);
+        btn_delete_grade_one.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmDialog(1);
+            }
+        });
+    }
+
+    private void btn_delete_grade_two() {
+        Button btn_delete_grade_two = findViewById(R.id.delete_grade_two);
+        btn_delete_grade_two.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmDialog(2);
+            }
+        });
+    }
+
+    private void btn_delete_grade_there() {
+        Button btn_delete_grade_there = findViewById(R.id.delete_grade_there);
+        btn_delete_grade_there.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmDialog(3);
+            }
+        });
+    }
+
+    private void btn_delete_grade_private() {
+        Button btn_delete_grade_private = findViewById(R.id.delete_grade_private);
+        btn_delete_grade_private.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                confirmDialog(4);
+            }
+        });
+    }
+
+    private void confirmDialog(final int grade_num){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete All?");
+        builder.setMessage("Are you sure you want to delete all Students?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                DatabaseHelper db = new DatabaseHelper(setting.this);
+                db.deleteAllData(grade_num);
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.create().show();
     }
 
     private void set_price() {
@@ -67,7 +141,6 @@ public class setting extends AppCompatActivity {
             @Override
             public void onClick(View v) {
              back();
-
             }
         });
     }

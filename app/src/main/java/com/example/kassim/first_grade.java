@@ -24,38 +24,28 @@ import java.util.ArrayList;
 public class first_grade extends AppCompatActivity  {
 
     private int activity_num;
-    private FloatingActionButton main_float ,add_student, delete_all;
-    private float translatonY =600f;
-    private OvershootInterpolator interpolator = new OvershootInterpolator();
-    private Boolean ismenuopen = false;
-
+    private FloatingActionButton add_student;
     private DatabaseHelper db  ;
-    private TextView  grade_name ,txt_count_student;
+    private TextView txt_count_student;
     private ArrayList<String> ID, student_name , student_year;
     private RecyclerView recyclerView;
-    private CustomAdapter customAdapter;
     private Spinner filter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first_grade);
-
-        btn_back();         btn_main_float();
-        btn_add();          btn_delete_all();
-
+        add_student = findViewById(R.id.btn_add);
+        txt_count_student = findViewById(R.id.txt_count_student);
         recyclerView = findViewById(R.id.recyclerView);
 
-        txt_count_student = findViewById(R.id.txt_count_student);
-        grade_name =findViewById(R.id.grade_name);
-        activity_num = getIntent().getIntExtra("activity_num", 1);
-        if (activity_num ==1){grade_name.setText("First Grade");}
-        else if (activity_num ==2){grade_name.setText("Second Grade"); }
-        else if (activity_num ==3){grade_name.setText("Third Grade");}
-        else if (activity_num ==4){grade_name.setText("Private");}
+        btn_back();
+        btn_add();
+        set_grade_name();
 
-        add_student.animate().translationY(translatonY).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
-        delete_all.animate().translationY(translatonY).alpha(0f).setInterpolator(interpolator).setDuration(300).start();
+
+        activity_num = getIntent().getIntExtra("activity_num", 1);
+
 
 
         db = new DatabaseHelper(first_grade.this);
@@ -63,9 +53,38 @@ public class first_grade extends AppCompatActivity  {
         student_name = new ArrayList<>();
         student_year = new ArrayList<>();
 
+
+        onScrolling();
         setFilter();
     }
 
+    private void set_grade_name() {
+        TextView grade_name =findViewById(R.id.grade_name);
+        if (activity_num ==1){grade_name.setText("First Grade");}
+        else if (activity_num ==2){grade_name.setText("Second Grade"); }
+        else if (activity_num ==3){grade_name.setText("Third Grade");}
+        else if (activity_num ==4){grade_name.setText("Private");}
+    }
+
+    @Override
+    protected void onDestroy () {
+        super.onDestroy();
+        db.close();
+    }
+
+    void onScrolling(){
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0 && add_student.getVisibility() == View.VISIBLE) {
+                    add_student.hide();
+                } else if (dy < 0 && add_student.getVisibility() != View.VISIBLE) {
+                    add_student.show();
+                }
+            }
+        });
+    }
 
     @Override
     public void onBackPressed() {
@@ -91,7 +110,8 @@ public class first_grade extends AppCompatActivity  {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ID.clear(); student_name.clear(); student_year.clear();
-                customAdapter = new CustomAdapter(first_grade.this,ID,student_name,student_year);
+
+                CustomAdapter customAdapter = new CustomAdapter(first_grade.this,ID,student_name,student_year);
                 recyclerView.setAdapter(customAdapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(first_grade.this));
                 storeDataInArray(activity_num,filter.getSelectedItem().toString());
@@ -133,46 +153,13 @@ public class first_grade extends AppCompatActivity  {
                 student_name.add(cursor.getString(1));
 
                 if (activity_num == 4) { student_year.add(cursor.getString(18)); }
-                else {//student_year.add("");
-                }
+                else { student_year.add(""); }
             }
             empty_image_view.setVisibility(View.GONE);
             no_data.setVisibility(View.GONE);
             filter.setVisibility(View.VISIBLE);
             txt_count_student.setVisibility(View.VISIBLE);
         }
-    }
-
-    private void openMenu(){
-        ismenuopen = !ismenuopen;
-        main_float.setImageResource(R.drawable.ic_close);
-        main_float.animate().setInterpolator(interpolator).rotationBy(90f).setDuration(300).start();
-        add_student.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
-        delete_all.animate().translationY(0f).alpha(1f).setInterpolator(interpolator).setDuration(300).start();
-    }
-
-    private void closeMenu(){
-        ismenuopen = !ismenuopen;
-        main_float.setImageResource(R.drawable.ic_keyboard_arrow_up);
-        main_float.animate().setInterpolator(interpolator).rotationBy(-90f).setDuration(300).start();
-        add_student.animate().alpha(0f).translationY(translatonY).setInterpolator(interpolator).setDuration(300).start();
-        delete_all.animate().alpha(0f).translationY(translatonY).setInterpolator(interpolator).setDuration(300).start();
-    }
-
-    private void btn_main_float(){
-        main_float = findViewById(R.id.btn_more);
-        main_float.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(ismenuopen)
-                {
-                    closeMenu();
-                }else
-                {
-                    openMenu();
-                }
-            }
-        });
     }
 
     private void btn_add(){
@@ -188,49 +175,12 @@ public class first_grade extends AppCompatActivity  {
         });
     }
 
-    private void btn_delete_all(){
-        delete_all = findViewById(R.id.btn_delete_all);
-        delete_all.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               confirmDialog();
-            }
-        });
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 1){
             recreate();
         }
-    }
-
-    private void confirmDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Delete All?");
-        builder.setMessage("Are you sure you want to delete all Students?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                DatabaseHelper myDB = new DatabaseHelper(first_grade.this);
-                myDB.deleteAllData(activity_num);
-                //Refresh Activity
-                ID.clear(); student_name.clear();
-                customAdapter = new CustomAdapter(first_grade.this,ID,student_name,ID);
-                recyclerView.setAdapter(customAdapter);
-                recyclerView.setLayoutManager(new LinearLayoutManager(first_grade.this));
-                storeDataInArray(activity_num,"All");
-                closeMenu();
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
-        });
-        builder.create().show();
     }
 
     private  void btn_back() {
@@ -244,5 +194,4 @@ public class first_grade extends AppCompatActivity  {
             }
         });
     }
-
 }
