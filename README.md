@@ -1,2 +1,2 @@
-# Kassim-xd
+# Kassim
 Student Management System
